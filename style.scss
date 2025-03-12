@@ -848,3 +848,184 @@ button:hover {
     font-style: italic;
     margin-bottom: 10px;
 }
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: monospace;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #666;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.copy-button {
+    display: none;
+    margin-top: 8px;
+    padding: 8px 16px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.copy-button:hover {
+    background: #0056b3;
+}
+
+input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+
+#timer {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+button,
+select,
+input {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#startBtn {
+    background-color: #4caf50;
+    color: white;
+}
+
+#startBtn:hover {
+    background-color: #45a049;
+}
+
+#resetBtn,
+#endBtn {
+    background-color: #f44336;
+    color: white;
+}
+
+#resetBtn:hover,
+#endBtn:hover {
+    background-color: #da190b;
+}
+
+select {
+    background-color: #3498db;
+    color: white;
+    -webkit-appearance: none;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+select:hover {
+    background-color: #2980b9;
+}
+
+#goalInput {
+    width: calc(100% - 1.5em);
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#sessionLog {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 2rem;
+    overflow-x: auto;
+}
+
+#sessionLog table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#sessionLog th,
+#sessionLog td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#sessionLog th {
+    background-color: #f2f2f2;
+}
+
+#jsonOutput {
+    width: 100%;
+    height: 200px;
+    margin-top: 2rem;
+    font-family: monospace;
+}
+
+.deleteBtn {
+    background-color: transparent;
+    border: none;
+    color: #f44336;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.2rem 0.5rem;
+}
+
+.deleteBtn:hover {
+    color: #da190b;
+}
