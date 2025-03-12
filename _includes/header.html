@@ -23,4 +23,35 @@
     <body>
         <div id="outer-wrapper">
             <div id="wrapper">
-                <h1>Toolkit</h1>
+                <header id="header">
+                    <ul class="skip-link-ul">
+                        <li>
+                            <a href="#main" class="skip-link">Skip to main content</a>
+                        </li>
+                    </ul>
+                    <div class="blog-title">
+                        <a href="{{ site.url }}">
+                            {% if site.title %}
+                            {{ site.title }}
+                            {% else %}
+                            {{ page.title }}
+                            {% endif %}</a> <sup class="asterisk" id="top">*</sup>
+                    </div>
+                    <div class="blog-image"></div>
+                    <p class="blog-slogan">
+                        {% assign slogans = site.data.slogans %}
+                        {% assign random_index = "now" | date: "%s" | modulo: slogans.size %}
+                        // {{ slogans[random_index] }}
+                    </p>
+                    <nav class="blog-menu">
+                        {% if page.id %}
+                        <a href="{{ site.url }}" title="Back to all posts">&larr; Back</a>
+                        {% else %}
+                        <a href="{{ site.url }}" title="Back to all home">&larr; Home</a>
+                        {% endif %}
+                        {% for item in site.navigation_header %}
+                        <a href="{{item.link}}">{{item.title}}</a>
+                        {% endfor %}
+                    </nav>
+                </header>
+                <div id="main" class="content">

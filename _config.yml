@@ -39,3 +39,19 @@ exclude:
 include:
   - ".well-known"
   - "_pages"
+
+# Site Navigation
+## Header
+navigation_header:
+  - link: "https://tools.thechels.uk/"
+    title: "Tools"
+  - link: "https://thechels.uk/about"
+    title: "About"
+  - link: "https://thechels.uk/cv"
+    title: "CV"
+  - link: "https://thechels.uk/daily"
+    title: "Daily"
+  - link: "https://thechels.uk/slashes"
+    title: "More //"
+  - link: "https://shop.the-ensemblist.uk"
+    title: "Shop &raquo;"
