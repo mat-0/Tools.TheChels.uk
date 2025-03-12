@@ -1,4 +1,11 @@
-# Interview Template
+---
+layout: page
+title: Interview Template
+permalink: /interview-template
+
+---
+
+#
 
 ## Introduction
 
@@ -45,7 +52,7 @@
 - What would they have done differently if they had their time again? Is it really that complex?
 - If they struggle with this, then ask them about the most exciting thing they have built.
 - If it's something they are proud of they should be open and be able to talk in detail.
-- Always probe technically to see if they genuinely understand and 
+- Always probe technically to see if they genuinely understand and
 
 w
 active vs it being done in the team.

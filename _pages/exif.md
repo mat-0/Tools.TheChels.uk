@@ -1,6 +1,6 @@
 ---
-layout: extract-urls
-title: Extract Urls
-permalink: /extract-urls
+layout: exif
+title: Exif data
+permalink: /exif
 
 ---
