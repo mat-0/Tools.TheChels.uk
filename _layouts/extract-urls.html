@@ -1,55 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extract URLs</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        #input {
-            width: 100%;
-            max-width: 100%;
-            height: 100px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: #f0f0f0;
-        }
-        #output-container {
-            display: none;
-        }
-        #output {
-            width: 100%;
-            max-width: 100%;
-            height: 150px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: #fff;
-        }
-        #copy-button {
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            #input, #output {
-                height: 120px;
-            }
-        }
-    </style>
-</head>
-<body>
+{% include header.html %}
+{% include nav.html %}
+<main>
+
     <h1>Extract URLs</h1>
     <p>Copy content from a web page and paste here to extract linked URLs:</p>
     <div id="input" contenteditable="true"></div>
@@ -58,16 +10,15 @@
         <textarea id="output" readonly></textarea>
         <button id="copy-button">Copy to clipboard</button>
     </div>
-
     <script>
         const input = document.getElementById('input');
         const outputContainer = document.getElementById('output-container');
         const output = document.getElementById('output');
         const copyButton = document.getElementById('copy-button');
 
-        input.addEventListener('paste', function(e) {
+        input.addEventListener('paste', function (e) {
             e.preventDefault();
-            
+
             const clipboardData = e.clipboardData || window.clipboardData;
             const pastedData = clipboardData.getData('text/html');
 
@@ -89,23 +40,25 @@
             input.textContent = 'Content pasted. URLs extracted.';
         });
 
-        input.addEventListener('focus', function() {
+        input.addEventListener('focus', function () {
             if (input.textContent === 'Content pasted. URLs extracted.') {
                 input.textContent = '';
             }
         });
 
-        copyButton.addEventListener('click', function() {
+        copyButton.addEventListener('click', function () {
             output.select();
             document.execCommand('copy');
-            
+
             const originalText = copyButton.textContent;
             copyButton.textContent = 'Copied!';
-            
+
             setTimeout(() => {
                 copyButton.textContent = originalText;
             }, 1500);
         });
     </script>
-</body>
-</html>
+</main>
+</div>
+</div>
+{% include footer.html %}

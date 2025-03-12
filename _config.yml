@@ -43,10 +43,8 @@ include:
 # Site Navigation
 ## Header
 navigation_header:
-  - link: "https://tools.thechels.uk/"
-    title: "Tools"
-  - link: "https://thechels.uk/about"
-    title: "About"
+  - link: "https://thechels.uk/"
+    title: "TheChels"
   - link: "https://thechels.uk/cv"
     title: "CV"
   - link: "https://thechels.uk/daily"

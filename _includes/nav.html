@@ -9,3 +9,12 @@
         <li><a href="yaml-explorer.html">Yaml Explorer</a></li>
     </ul>
 </nav>
+
+<nav id="submenu" class="blog-menu">
+    <ul>
+        {% assign sorted_pages = site.pages | sort:
+        'title' %} {% for item in sorted_pages %}
+        <li>/ <a href="{{item.link}}">{{item.title}}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
