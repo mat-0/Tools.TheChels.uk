@@ -1,5 +1,35 @@
 {% include header.html %}
 <h1 class="post-title">{{ page.title }}</h1>
+
+
+<nav class="blog-menu">
+    <ul>
+        {% if page.id %}
+        <li><a href="{{ site.url }}" title="Back to all posts">&larr; Back</a>
+            {% else %}
+        <li><a href="{{ site.url }}" title="Back to all home">&larr; Home</a>
+            {% endif %}
+        <li><a href="/interview-template">Interview Template</a></li>
+        <li><a href="/strategy-template">Strategy Template</a></li>
+        <li><a href="/escape-entities">Escape Entities</a></li>
+        <li><a href="/exif">Exif data</a></li>
+        <li><a href="/extract-urls">Extract Urls</a></li>
+        <li><a href="/github-issue">GitHub Issue Checker</a></li>
+        <li><a href="/image-resize-quality">Image Resize Quality</a></li>
+        <li><a href="/image-to-jpeg">Convert Image to JPEG</a></li>
+        <li><a href="/image-to-svg">Convert Image to SVG</a></li>
+        <li><a href="/json-to-yaml">JSON to Yaml Converter</a></li>
+        <li><a href="/paste-rich-text">Paste Rich Text</a></li>
+        <li><a href="/pomodoro">Pomodoro Timer</a></li>
+        <li><a href="/sql-pretty-printer">SQL Pretty Printer</a></li>
+        <li><a href="/writing-style">Writing Style</a></li>
+        <li><a href="/yaml-explorer">YAML explorer</a></li>
+        <li><a href="/_pages/qr">QR Code</a></li>
+    </ul>
+</nav>
+
+
+<h2>User Agent</h2>
 <p id="ua"></p>
 <script>
     document.getElementById("ua").textContent = navigator.userAgent;
