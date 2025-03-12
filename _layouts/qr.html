@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Decoder</title>
+{% include header.html %}
+{% include nav.html %}
+<main>
     <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
     <style>
         * {
             box-sizing: border-box;
         }
+
         body {
             font-family: Arial, sans-serif;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
+
         #dropArea {
             border: 2px dashed #ccc;
             border-radius: 20px;
@@ -23,12 +22,15 @@
             padding: 20px;
             text-align: center;
         }
+
         #dropArea.highlight {
             border-color: purple;
         }
+
         #fileElem {
             display: none;
         }
+
         #result {
             margin-top: 20px;
             padding: 10px;
@@ -36,9 +38,8 @@
             border-radius: 5px;
         }
     </style>
-</head>
-<body>
-    <h1>QR Code Decoder</h1>
+
+
     <p>Uses <a href="https://github.com/cozmo/jsQR/">jsQR</a> by Cosmo Wolfe</p>
     <p>Upload, drag & drop, or paste a QR code image:</p>
     <div id="dropArea">
@@ -49,7 +50,7 @@
 
     <script>
         // Ensure jsQR is loaded before proceeding
-        window.onload = function() {
+        window.onload = function () {
             if (typeof jsQR === 'undefined') {
                 document.getElementById('result').innerHTML = "Error: QR code library not loaded. Please check your internet connection and refresh the page.";
                 return;
@@ -114,9 +115,9 @@
 
             function decodeQR(file) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     const img = new Image();
-                    img.onload = function() {
+                    img.onload = function () {
                         const canvas = document.createElement('canvas');
                         const context = canvas.getContext('2d');
                         canvas.width = img.width;
@@ -124,7 +125,7 @@
                         context.drawImage(img, 0, 0, img.width, img.height);
                         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
                         const code = jsQR(imageData.data, imageData.width, imageData.height);
-                        
+
                         if (code) {
                             let content = code.data;
                             if (isValidUrl(content)) {
@@ -150,5 +151,7 @@
             }
         };
     </script>
-</body>
-</html>
+</main>
+</div>
+</div>
+{% include footer.html %}

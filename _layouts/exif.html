@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EXIF Data Viewer</title>
-</head>
-<body>
+{% include header.html %}
+{% include nav.html %}
+<main>
+
     <div class="container">
         <h1>EXIF Data Viewer</h1>
         <input type="file" id="file-input" accept="image/*">
@@ -15,7 +11,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const fileInput = document.getElementById('file-input');
             const coordinatesDiv = document.getElementById('coordinates');
             const exifDataDiv = document.getElementById('exif-data');
@@ -26,10 +22,10 @@
                 const file = event.target.files[0];
                 const reader = new FileReader();
 
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     const img = new Image();
-                    img.onload = function() {
-                        EXIF.getData(this, function() {
+                    img.onload = function () {
+                        EXIF.getData(this, function () {
                             const allTags = EXIF.getAllTags(this);
                             displayExifData(allTags);
                         });
@@ -74,5 +70,7 @@
             }
         });
     </script>
-</body>
-</html>
+</main>
+</div>
+</div>
+{% include footer.html %}

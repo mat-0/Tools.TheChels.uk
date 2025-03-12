@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro Timer</title>
+{% include header.html %}
+{% include nav.html %}
+<main>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,6 +10,7 @@
             padding: 2rem;
             background-color: #f0f0f0;
         }
+
         .container {
             text-align: center;
             background-color: white;
@@ -22,11 +20,15 @@
             margin-bottom: 2rem;
             box-sizing: border-box;
         }
+
         #timer {
             font-size: 4rem;
             margin-bottom: 1rem;
         }
-        button, select, input {
+
+        button,
+        select,
+        input {
             font-size: 1rem;
             padding: 0.5rem 1rem;
             margin: 0.5rem;
@@ -35,20 +37,27 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         #startBtn {
             background-color: #4CAF50;
             color: white;
         }
+
         #startBtn:hover {
             background-color: #45a049;
         }
-        #resetBtn, #endBtn {
+
+        #resetBtn,
+        #endBtn {
             background-color: #f44336;
             color: white;
         }
-        #resetBtn:hover, #endBtn:hover {
+
+        #resetBtn:hover,
+        #endBtn:hover {
             background-color: #da190b;
         }
+
         select {
             background-color: #3498db;
             color: white;
@@ -60,9 +69,11 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         select:hover {
             background-color: #2980b9;
         }
+
         #goalInput {
             width: calc(100% - 1.5em);
             padding: 0.5rem;
@@ -71,30 +82,37 @@
             border-radius: 5px;
             box-sizing: border-box;
         }
+
         #sessionLog {
             width: 100%;
             max-width: 800px;
             margin-top: 2rem;
             overflow-x: auto;
         }
+
         #sessionLog table {
             width: 100%;
             border-collapse: collapse;
         }
-        #sessionLog th, #sessionLog td {
+
+        #sessionLog th,
+        #sessionLog td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
+
         #sessionLog th {
             background-color: #f2f2f2;
         }
+
         #jsonOutput {
             width: 100%;
             height: 200px;
             margin-top: 2rem;
             font-family: monospace;
         }
+
         .deleteBtn {
             background-color: transparent;
             border: none;
@@ -103,12 +121,12 @@
             font-size: 1.2rem;
             padding: 0.2rem 0.5rem;
         }
+
         .deleteBtn:hover {
             color: #da190b;
         }
     </style>
-</head>
-<body>
+
     <div class="container">
         <h1>Pomodoro Timer</h1>
         <input type="text" id="goalInput" placeholder="Enter your goal for this session" required>
@@ -329,7 +347,7 @@
         }
 
         function formatPauses(pauses) {
-            return pauses.map(pause => 
+            return pauses.map(pause =>
                 `${formatDate(pause.pauseTime)} - ${pause.resumeTime ? formatDate(pause.resumeTime) : 'Not resumed'}`
             ).join('<br>');
         }
@@ -355,5 +373,7 @@
 
         updateDisplay();
     </script>
-</body>
-</html>
+</main>
+</div>
+</div>
+{% include footer.html %}
