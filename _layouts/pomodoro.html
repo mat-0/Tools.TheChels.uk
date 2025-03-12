@@ -1,6 +1,6 @@
 {% include header.html %}
-{% include nav.html %}
 <main>
+    <h1 class="post-title">{{ page.title }}</h1>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -126,25 +126,22 @@
             color: #da190b;
         }
     </style>
-
-    <div class="container">
-        <h1>Pomodoro Timer</h1>
-        <input type="text" id="goalInput" placeholder="Enter your goal for this session" required>
-        <div id="timer">25:00</div>
-        <select id="durationSelect">
-            <option value="5">5 minutes</option>
-            <option value="10">10 minutes</option>
-            <option value="15">15 minutes</option>
-            <option value="20">20 minutes</option>
-            <option value="25" selected>25 minutes</option>
-            <option value="30">30 minutes</option>
-            <option value="45">45 minutes</option>
-            <option value="60">60 minutes</option>
-        </select>
-        <br>
-        <button id="startBtn">Start</button>
-        <button id="resetBtn">Reset</button>
-        <button id="endBtn">End Session</button>
+    <input type="text" id="goalInput" placeholder="Enter your goal for this session" required>
+    <div id="timer">25:00</div>
+    <select id="durationSelect">
+        <option value="5">5 minutes</option>
+        <option value="10">10 minutes</option>
+        <option value="15">15 minutes</option>
+        <option value="20">20 minutes</option>
+        <option value="25" selected>25 minutes</option>
+        <option value="30">30 minutes</option>
+        <option value="45">45 minutes</option>
+        <option value="60">60 minutes</option>
+    </select>
+    <br>
+    <button id="startBtn">Start</button>
+    <button id="resetBtn">Reset</button>
+    <button id="endBtn">End Session</button>
     </div>
 
     <div id="sessionLog">

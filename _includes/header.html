@@ -47,9 +47,11 @@
                         {% else %}
                         <a href="{{ site.url }}" title="Back to all home">&larr; Home</a>
                         {% endif %}
-                        {% for item in site.navigation_header %}
-                        <a href="{{item.link}}">{{item.title}}</a>
+
+                        {% for item in site.pages %}
+                        <a href="{{ item.url }}">{{ item.title }}</a>
                         {% endfor %}
+                        </ul>
                     </nav>
                 </header>
                 <div id="main" class="content">

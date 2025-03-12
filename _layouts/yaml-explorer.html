@@ -1,6 +1,6 @@
 {% include header.html %}
-{% include nav.html %}
 <main>
+  <h1 class="post-title">{{ page.title }}</h1>
   <style>
     * {
       box-sizing: border-box;
@@ -110,14 +110,12 @@
     }
   </style>
 
-  <div class="container">
-    <h1>YAML Explorer</h1>
-    <div style="display: flex; gap: 8px;">
-      <input type="url" placeholder="Optional: Enter URL to YAML file" style="flex: 1;" />
-      <button type="button" style="font-size: 16px; padding: 0 16px;">Load</button>
-    </div>
-    <textarea placeholder="Paste your YAML here..."></textarea>
-    <div class="output"></div>
+  <div style="display: flex; gap: 8px;">
+    <input type="url" placeholder="Optional: Enter URL to YAML file" style="flex: 1;" />
+    <button type="button" style="font-size: 16px; padding: 0 16px;">Load</button>
+  </div>
+  <textarea placeholder="Paste your YAML here..."></textarea>
+  <div class="output"></div>
   </div>
 
   <script type="module">

@@ -1,6 +1,6 @@
 {% include header.html %}
-{% include nav.html %}
 <main>
+  <h1 class="post-title">{{ page.title }}</h1>
   <style>
     * {
       box-sizing: border-box;
@@ -101,54 +101,52 @@
     }
   </style>
 
-
-  <div class="container">
-    <div class="controls">
-      <div class="control-group">
-        <label for="dialect">Dialect:</label>
-        <select id="dialect">
-          <option value="sqlite">SQLite</option>
-          <option value="sql">Standard SQL</option>
-          <option value="postgresql">PostgreSQL</option>
-          <option value="mysql">MySQL</option>
-        </select>
-      </div>
-
-      <div class="control-group">
-        <label for="tabWidth">Tab width:</label>
-        <input type="number" id="tabWidth" value="2" min="1" max="8">
-      </div>
-
-      <div class="control-group">
-        <label for="keywordCase">Keyword case:</label>
-        <select id="keywordCase">
-          <option value="preserve">preserve</option>
-          <option value="upper">UPPER</option>
-          <option value="lower">lower</option>
-        </select>
-      </div>
-
-      <div class="control-group">
-        <label for="indentStyle">Indent style:</label>
-        <select id="indentStyle">
-          <option value="standard">Standard</option>
-          <option value="tabularLeft">Tabular (left)</option>
-          <option value="tabularRight">Tabular (right)</option>
-        </select>
-      </div>
+  <div class="controls">
+    <div class="control-group">
+      <label for="dialect">Dialect:</label>
+      <select id="dialect">
+        <option value="sqlite">SQLite</option>
+        <option value="sql">Standard SQL</option>
+        <option value="postgresql">PostgreSQL</option>
+        <option value="mysql">MySQL</option>
+      </select>
     </div>
 
-    <div class="field">
-      <label for="input">Input SQL:</label>
-      <textarea id="input" spellcheck="false"></textarea>
+    <div class="control-group">
+      <label for="tabWidth">Tab width:</label>
+      <input type="number" id="tabWidth" value="2" min="1" max="8">
     </div>
 
-    <div class="field">
-      <label for="output">Formatted SQL:</label>
-      <textarea id="output" readonly spellcheck="false"></textarea>
+    <div class="control-group">
+      <label for="keywordCase">Keyword case:</label>
+      <select id="keywordCase">
+        <option value="preserve">preserve</option>
+        <option value="upper">UPPER</option>
+        <option value="lower">lower</option>
+      </select>
     </div>
 
-    <button class="copy-button">Copy to clipboard</button>
+    <div class="control-group">
+      <label for="indentStyle">Indent style:</label>
+      <select id="indentStyle">
+        <option value="standard">Standard</option>
+        <option value="tabularLeft">Tabular (left)</option>
+        <option value="tabularRight">Tabular (right)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="input">Input SQL:</label>
+    <textarea id="input" spellcheck="false"></textarea>
+  </div>
+
+  <div class="field">
+    <label for="output">Formatted SQL:</label>
+    <textarea id="output" readonly spellcheck="false"></textarea>
+  </div>
+
+  <button class="copy-button">Copy to clipboard</button>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sql-formatter/12.2.3/sql-formatter.min.js"></script>

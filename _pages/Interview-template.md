@@ -5,8 +5,6 @@ permalink: /interview-template
 
 ---
 
-#
-
 ## Introduction
 
 - Welcome the candidate and set the scene, ensure all parties can be seen and heard ok.

@@ -1,6 +1,6 @@
 {% include header.html %}
-{% include nav.html %}
 <main>
+  <h1 class="post-title">{{ page.title }}</h1>
   <style>
     * {
       box-sizing: border-box;
@@ -71,15 +71,12 @@
       border-radius: 4px;
     }
   </style>
-
-  <div class="container">
-    <h1>Writing Style Analyzer</h1>
-    <p>Adapted from <a
-        href="https://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/">these shell
-        scripts</a> published by Matt Might.</p>
-    <p>Paste your text below to check for weasel words, passive voice, and duplicate words:</p>
-    <textarea id="input" placeholder="Enter your text here..."></textarea>
-    <div id="results" class="results"></div>
+  <p>Adapted from <a
+      href="https://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/">these shell
+      scripts</a> published by Matt Might.</p>
+  <p>Paste your text below to check for weasel words, passive voice, and duplicate words:</p>
+  <textarea id="input" placeholder="Enter your text here..."></textarea>
+  <div id="results" class="results"></div>
   </div>
 
   <script type="module">
