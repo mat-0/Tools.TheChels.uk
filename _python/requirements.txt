@@ -1,0 +1,8 @@
+requests
+yaml
+json
+datetime
+xml.etree.ElementTree
+pytest
+pathlib
+pillow

@@ -1,0 +1,41 @@
+highlighter: rouge
+permalink: ./:title
+title: "Tool"
+description: "// Hopefully helpful"
+author: "Mat"
+url: https://tools.thechels.uk
+copyright: "MB"
+encoding: UTF-8
+future: false
+repository: Mat-0/Tools
+defaultImagePath: "/images/splashscreens/apple-touch-icon-180x180.png"
+github:
+  repository_url: https://github.com/Mat-0/Tools
+  branch: main
+sass:
+  style: compressed
+plugins:
+  - jekyll-feed
+  - jekyll-avatar
+  - jekyll-github-metadata
+exclude:
+  - CNAME
+  - README.md
+  - LICENSE.md
+  - SECURITY.md
+  - requirements.txt
+  - _python/
+  - .github/
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+include:
+  - ".well-known"
+  - "_pages"

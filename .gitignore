@@ -11,8 +11,12 @@ _site/
 /vendor
 
 # Specific ignore for GitHub Pages
-# GitHub Pages will always use its own deployed version of pages-gem 
+# GitHub Pages will always use its own deployed version of pages-gem
 # This means GitHub Pages will NOT use your Gemfile.lock and therefore it is
 # counterproductive to check this file into the repository.
 # Details at https://github.com/github/pages-gem/issues/768
 Gemfile.lock
+index.html
+_python/convert_json_to_yml.py
+_python/github_post_add_film.py
+_python/run_film_lookup.py
