@@ -1,73 +1,71 @@
 {% include header.html %}
-<main>
-    <h1 class="post-title">{{ page.title }}</h1>
-        <input type="file" id="file-input" accept="image/*">
-        <div id="coordinates"></div>
-        <div id="exif-data"></div>
-    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const fileInput = document.getElementById('file-input');
-            const coordinatesDiv = document.getElementById('coordinates');
-            const exifDataDiv = document.getElementById('exif-data');
+<h1 class="post-title">{{ page.title }}</h1>
+<input type="file" id="file-input" accept="image/*">
+<div id="coordinates"></div>
+<div id="exif-data"></div>
+</div>
 
-            fileInput.addEventListener('change', handleFileSelect);
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const fileInput = document.getElementById('file-input');
+        const coordinatesDiv = document.getElementById('coordinates');
+        const exifDataDiv = document.getElementById('exif-data');
 
-            function handleFileSelect(event) {
-                const file = event.target.files[0];
-                const reader = new FileReader();
+        fileInput.addEventListener('change', handleFileSelect);
 
-                reader.onload = function (e) {
-                    const img = new Image();
-                    img.onload = function () {
-                        EXIF.getData(this, function () {
-                            const allTags = EXIF.getAllTags(this);
-                            displayExifData(allTags);
-                        });
-                    };
-                    img.src = e.target.result;
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const img = new Image();
+                img.onload = function () {
+                    EXIF.getData(this, function () {
+                        const allTags = EXIF.getAllTags(this);
+                        displayExifData(allTags);
+                    });
                 };
+                img.src = e.target.result;
+            };
 
-                reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
+        }
+
+        function displayExifData(tags) {
+            let lat = null;
+            let lon = null;
+
+            if (tags.GPSLatitude && tags.GPSLongitude) {
+                lat = convertDMSToDD(tags.GPSLatitude, tags.GPSLatitudeRef);
+                lon = convertDMSToDD(tags.GPSLongitude, tags.GPSLongitudeRef);
             }
 
-            function displayExifData(tags) {
-                let lat = null;
-                let lon = null;
-
-                if (tags.GPSLatitude && tags.GPSLongitude) {
-                    lat = convertDMSToDD(tags.GPSLatitude, tags.GPSLatitudeRef);
-                    lon = convertDMSToDD(tags.GPSLongitude, tags.GPSLongitudeRef);
-                }
-
-                if (lat !== null && lon !== null) {
-                    coordinatesDiv.innerHTML = `
+            if (lat !== null && lon !== null) {
+                coordinatesDiv.innerHTML = `
                         <h2>GPS Coordinates</h2>
                         <p>Latitude: ${lat.toFixed(6)}</p>
                         <p>Longitude: ${lon.toFixed(6)}</p>
                     `;
-                } else {
-                    coordinatesDiv.innerHTML = '<p>No GPS coordinates found in the image.</p>';
-                }
+            } else {
+                coordinatesDiv.innerHTML = '<p>No GPS coordinates found in the image.</p>';
+            }
 
-                exifDataDiv.innerHTML = `
+            exifDataDiv.innerHTML = `
                     <h2>All EXIF Data</h2>
                     <pre>${JSON.stringify(tags, null, 2)}</pre>
                 `;
-            }
+        }
 
-            function convertDMSToDD(dms, ref) {
-                let dd = dms[0] + dms[1] / 60 + dms[2] / 3600;
-                if (ref === "S" || ref === "W") {
-                    dd = dd * -1;
-                }
-                return dd;
+        function convertDMSToDD(dms, ref) {
+            let dd = dms[0] + dms[1] / 60 + dms[2] / 3600;
+            if (ref === "S" || ref === "W") {
+                dd = dd * -1;
             }
-        });
-    </script>
-</main>
-</div>
-</div>
+            return dd;
+        }
+    });
+</script>
+
 {% include footer.html %}

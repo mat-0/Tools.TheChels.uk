@@ -1,12 +1,8 @@
 {% include header.html %}
-<main>
     <h1 class="post-title">{{ page.title }}</h1>
     <h2>Your User Agent:</h2>
     <p id="ua"></p>
     <script>
         document.getElementById("ua").textContent = navigator.userAgent;
     </script>
-</main>
-</div>
-</div>
 {% include footer.html %}
