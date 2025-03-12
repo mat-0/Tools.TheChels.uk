@@ -1,18 +1,18 @@
         </main>
-        <div class="footer">
-            <div class="wrapper">
-                <p>&copy; {{ site.time | date: '%Y' }}
-                    {% if site.copyright %}
-                    {{ site.copyright }}
-                    {% else %}
-                    {% endif %}
-                    <a href="/#{{ site.github.build_revision }}">#</a>
-                    <a href="#top" class="back-to-top" name="back-to-top">↑</a>
-                </p>
-            </div>
-        </div>
     </div>
 </div>
+    <div class="footer">
+        <div class="wrapper">
+            <p>&copy; {{ site.time | date: '%Y' }}
+                {% if site.copyright %}
+                {{ site.copyright }}
+                {% else %}
+                {% endif %}
+                <a href="/#{{ site.github.build_revision }}">#</a>
+                <a href="#top" class="back-to-top" name="back-to-top">↑</a>
+            </p>
+        </div>
+    </div>
 </body>
 
 </html>
