@@ -1,14 +1,18 @@
 ---
-Notes:
-       This is an Engineering Strategy Template
-       Following an idea from Will Larsen (Lethain)
-Tasks:
-       1. After observational period, provide a diagnosis.
-       2. Set out a vision (what does good look like in x time period (typically a year ot two).
-       3. Set out guiding principles.
-       4. Set out high-level action plan (remediation).
+layout: page
+title: Strategy Template
+permalink: /strategy-template
 
 ---
+
+> Notes:
+>       This is an Engineering Strategy Template
+>       Following an idea from Will Larsen (Lethain)
+>Tasks:
+>      1. After observational period, provide a diagnosis.
+>       2. Set out a vision (what does good look like in x time period (typically a year ot two).
+>       3. Set out guiding principles.
+>       4. Set out high-level action plan (remediation).
 
 - [Outline Goal of the team, business, and high-level how we will achieve this]
 
