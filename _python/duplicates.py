@@ -2,7 +2,7 @@ import yaml
 from collections import Counter
 
 # Load the YAML file
-with open('/Users/mat/Documents/GitHub/TheChels.uk/_data/films.yml', 'r') as file:
+with open('../_data/films.yml', 'r') as file:
     films = yaml.safe_load(file)
 
 # Extract the Imdb IDs
