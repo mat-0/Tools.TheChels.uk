@@ -16,6 +16,7 @@ seo: toolkit
 *   [JSON Pretty Printer](/json-pretty-printer)
 *   [JSON to Yaml Converter](/json-to-yaml)
 *   [List Sorter](/list-sorter)
+*   [Monte Carlo Simulator](/monte-carlo)
 *   [Paste Rich Text](/paste-rich-text)
 *   [Pomodoro Timer](/pomodoro)
 *   [QR Code](/qr)

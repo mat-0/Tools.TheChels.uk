@@ -1,0 +1,67 @@
+{% include header.html %}
+
+<h1 class="post-title">{{ page.title }}</h1>
+
+<input type="text" id="inputNumbers" placeholder="Enter comma-separated integers">
+<br>
+<button onclick="runMonteCarlo()">Run Monte Carlo Simulation</button>
+<br>
+<canvas id="monteCarloChart" width="400" height="200"></canvas>
+
+<script>
+    function runMonteCarlo() {
+        var input = document.getElementById('inputNumbers').value;
+        var numbers = input.split(',').map(Number);
+        var results = monteCarloSimulation(numbers, 1000);
+        drawChart(results);
+    }
+
+    function monteCarloSimulation(numbers, iterations) {
+        var results = [];
+        for (var i = 0; i < iterations; i++) {
+            var total = 0;
+            for (var j = 0; j < numbers.length; j++) {
+                total += numbers[j] * Math.random();
+            }
+            results.push(total);
+        }
+        return results;
+    }
+
+    function drawChart(data) {
+        var ctx = document.getElementById('monteCarloChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from({ length: data.length }, (_, i) => i + 1),
+                datasets: [{
+                    label: 'Monte Carlo Simulation',
+                    data: data,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Iteration'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Total'
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+{% include footer.html %}
