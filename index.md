@@ -21,5 +21,6 @@ seo: toolkit
 *   [QR Code](/qr)
 *   [SQL Pretty Printer](/sql-pretty-printer)
 *   [Strategy Template](/strategy-template)
+*   [String sorter](/string-sorter)
 *   [Writing Style](/writing-style)
 *   [YAML explorer](/yaml-explorer)
