@@ -4,6 +4,8 @@
 
 <input type="text" id="inputNumbers" placeholder="Enter comma-separated integers">
 <br>
+<input type="number" id="targetNumber" placeholder="Enter target number">
+<br>
 <button onclick="runMonteCarlo()">Run Monte Carlo Simulation</button>
 <br>
 <canvas id="monteCarloChart" width="400" height="200"></canvas>
@@ -11,9 +13,11 @@
 <script>
     function runMonteCarlo() {
         var input = document.getElementById('inputNumbers').value;
+        var target = Number(document.getElementById('targetNumber').value);
         var numbers = input.split(',').map(Number);
-        var results = monteCarloSimulation(numbers, 20);
-        drawChart(results);
+        var results = monteCarloSimulation(numbers, 1000);
+        var probabilities = calculateProbabilities(results, target);
+        drawChart(probabilities);
     }
 
     function monteCarloSimulation(numbers, iterations) {
@@ -28,18 +32,28 @@
         return results;
     }
 
+    function calculateProbabilities(results, target) {
+        results.sort((a, b) => a - b);
+        var probabilities = results.map((value, index) => ({
+            value: value,
+            probability: (index + 1) / results.length
+        }));
+        return probabilities;
+    }
+
     function drawChart(data) {
         var ctx = document.getElementById('monteCarloChart').getContext('2d');
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: Array.from({ length: data.length }, (_, i) => i + 1),
+                labels: data.map(d => d.value),
                 datasets: [{
-                    label: 'Monte Carlo Simulation',
-                    data: data,
+                    label: 'Probability',
+                    data: data.map(d => d.probability),
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1,
-                    fill: false
+                    fill: false,
+                    stepped: true
                 }]
             },
             options: {
@@ -47,14 +61,58 @@
                     x: {
                         title: {
                             display: true,
-                            text: 'Iteration'
+                            text: 'Value'
                         }
                     },
                     y: {
                         title: {
                             display: true,
-                            text: 'Accumulated Total'
-                        }
+                            text: 'Probability'
+                        },
+                        min: 0,
+                        max: 1
+                    }
+                },
+                plugins: {
+                    annotation: {
+                        annotations: [
+                            {
+                                type: 'line',
+                                scaleID: 'y',
+                                value: 0.75,
+                                borderColor: 'red',
+                                borderWidth: 2,
+                                label: {
+                                    content: '75%',
+                                    enabled: true,
+                                    position: 'start'
+                                }
+                            },
+                            {
+                                type: 'line',
+                                scaleID: 'y',
+                                value: 0.9,
+                                borderColor: 'orange',
+                                borderWidth: 2,
+                                label: {
+                                    content: '90%',
+                                    enabled: true,
+                                    position: 'start'
+                                }
+                            },
+                            {
+                                type: 'line',
+                                scaleID: 'y',
+                                value: 1,
+                                borderColor: 'green',
+                                borderWidth: 2,
+                                label: {
+                                    content: '100%',
+                                    enabled: true,
+                                    position: 'start'
+                                }
+                            }
+                        ]
                     }
                 }
             }
@@ -63,5 +121,6 @@
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
 
 {% include footer.html %}
