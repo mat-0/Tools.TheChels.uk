@@ -12,7 +12,7 @@
     function runMonteCarlo() {
         var input = document.getElementById('inputNumbers').value;
         var numbers = input.split(',').map(Number);
-        var results = monteCarloSimulation(numbers, 1000);
+        var results = monteCarloSimulation(numbers, 20);
         drawChart(results);
     }
 
@@ -53,7 +53,7 @@
                     y: {
                         title: {
                             display: true,
-                            text: 'Total'
+                            text: 'Accumulated Total'
                         }
                     }
                 }
