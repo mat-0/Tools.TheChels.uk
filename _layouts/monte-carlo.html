@@ -15,19 +15,21 @@
         var input = document.getElementById('inputNumbers').value;
         var target = Number(document.getElementById('targetNumber').value);
         var numbers = input.split(',').map(Number);
-        var results = monteCarloSimulation(numbers, 1000);
+        var results = monteCarloSimulation(numbers, 1000, target);
         var probabilities = calculateProbabilities(results, target);
         drawChart(probabilities);
     }
 
-    function monteCarloSimulation(numbers, iterations) {
+    function monteCarloSimulation(numbers, iterations, target) {
         var results = [];
         for (var i = 0; i < iterations; i++) {
             var total = 0;
-            for (var j = 0; j < numbers.length; j++) {
-                total += numbers[j] * Math.random();
+            var iteration = 0;
+            while (total < target) {
+                total += numbers[Math.floor(Math.random() * numbers.length)];
+                iteration++;
             }
-            results.push(total);
+            results.push(iteration);
         }
         return results;
     }
@@ -43,11 +45,10 @@
 
     function drawChart(data) {
         var ctx = document.getElementById('monteCarloChart').getContext('2d');
-        var labels = generateLabels(data.length);
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: labels,
+                labels: data.map(d => d.value),
                 datasets: [{
                     label: 'Probability',
                     data: data.map(d => d.probability),
@@ -62,7 +63,7 @@
                     x: {
                         title: {
                             display: true,
-                            text: 'Date'
+                            text: 'Iteration'
                         }
                     },
                     y: {
@@ -80,11 +81,11 @@
                             {
                                 type: 'line',
                                 scaleID: 'y',
-                                value: 0.75,
-                                borderColor: 'red',
+                                value: 0.8,
+                                borderColor: 'blue',
                                 borderWidth: 2,
                                 label: {
-                                    content: '75%',
+                                    content: '80%',
                                     enabled: true,
                                     position: 'start'
                                 }
@@ -118,16 +119,6 @@
                 }
             }
         });
-    }
-
-    function generateLabels(length) {
-        var labels = [];
-        var currentDate = new Date();
-        for (var i = 0; i < length; i++) {
-            labels.push(currentDate.toISOString().split('T')[0]);
-            currentDate.setDate(currentDate.getDate() + 14);
-        }
-        return labels;
     }
 </script>
 
