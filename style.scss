@@ -535,7 +535,7 @@ label {
 }
 
 #input {
-    width: 100%;
+    width: 832px;
     max-width: 100%;
     height: 100px;
     margin-bottom: 10px;
@@ -573,6 +573,7 @@ input {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
+    width: 832px;
 }
 .url-input {
     flex: 1;
@@ -676,7 +677,7 @@ label {
 }
 
 #dropzone {
-    width: 500px;
+    width: 830px;
     height: 100px;
     border: 2px dashed #ccc;
     text-align: center;
@@ -684,16 +685,14 @@ label {
     margin-bottom: 20px;
 }
 #output {
-    width: 500px;
+    width: 830px;
     margin-bottom: 20px;
 }
 textarea {
-    width: 500px;
+    width: 830px;
     height: 100px;
 }
-.container {
-    margin-bottom: 20px;
-}
+
 #fileInput {
     display: none;
 }
@@ -913,7 +912,7 @@ select {
 }
 
 input[type="number"] {
-    width: 60px;
+    width: 100px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -965,7 +964,6 @@ input {
 select {
     background-color: #3498db;
     color: white;
-    -webkit-appearance: none;
     padding: 0.5rem 1rem;
     margin: 0.5rem;
     border: none;
