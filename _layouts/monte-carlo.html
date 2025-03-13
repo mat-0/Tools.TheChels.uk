@@ -45,17 +45,27 @@
 
     function drawChart(data) {
         var ctx = document.getElementById('monteCarloChart').getContext('2d');
+        var labels = Array.from(new Set(data.map(d => d.value)));
+        var highLowData = labels.map(label => {
+            var filtered = data.filter(d => d.value === label);
+            return {
+                label: label,
+                high: Math.max(...filtered.map(d => d.probability)),
+                low: Math.min(...filtered.map(d => d.probability))
+            };
+        });
+
         new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
-                labels: data.map(d => d.value),
+                labels: labels,
                 datasets: [{
-                    label: 'Probability',
-                    data: data.map(d => d.probability),
+                    label: 'Probability Range',
+                    data: highLowData.map(d => ({ x: d.label, y: [d.low, d.high] })),
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1,
-                    fill: false,
-                    stepped: true
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    fill: false
                 }]
             },
             options: {
