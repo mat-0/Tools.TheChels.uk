@@ -43,10 +43,11 @@
 
     function drawChart(data) {
         var ctx = document.getElementById('monteCarloChart').getContext('2d');
+        var labels = generateLabels(data.length);
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: data.map(d => d.value),
+                labels: labels,
                 datasets: [{
                     label: 'Probability',
                     data: data.map(d => d.probability),
@@ -61,7 +62,7 @@
                     x: {
                         title: {
                             display: true,
-                            text: 'Value'
+                            text: 'Date'
                         }
                     },
                     y: {
@@ -117,6 +118,16 @@
                 }
             }
         });
+    }
+
+    function generateLabels(length) {
+        var labels = [];
+        var currentDate = new Date();
+        for (var i = 0; i < length; i++) {
+            labels.push(currentDate.toISOString().split('T')[0]);
+            currentDate.setDate(currentDate.getDate() + 14);
+        }
+        return labels;
     }
 </script>
 
