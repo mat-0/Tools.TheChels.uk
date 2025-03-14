@@ -6,9 +6,6 @@ permalink: /interview-template
 
 ---
 
-
-# Interview Template
-
 ## Introduction
 
 - Welcome the candidate and set the scene, ensure all parties can be seen and heard ok.

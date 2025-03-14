@@ -14,6 +14,7 @@ seo: toolkit
 * [Extract Urls](/extract-urls) - Extract URLs from text.
 * [GitHub Issue Checker](/github-issue) - Check and manage GitHub issues.
 * [Monte Carlo Simulator](/monte-carlo) - Run Monte Carlo simulations and visualize results for agile teams
+* [Rolling Average Chart](/roilling-average) - A charting tool to calculate rolling averages
 
 ##  Manipulations
 
@@ -38,9 +39,9 @@ seo: toolkit
 * [Interview Template](/interview-template) - Template for conducting interviews.
 * [Strategy Template](/strategy-template) - Template for creating strategies.
 * [Secure Development Policy](/secure-dev-policy)
-* [Service level agreement policy](/Service-level-agreement-policy)
-* [Principles](/principles)
-* [Dora-assessment](/dora-assessment)
+* [Service Level Agreement Policy](/Service-level-agreement-policy)
+* [Engineering Principles](/principles)
+* [Dora Assessment](/dora-assessment)
 
 ## Role Profile Templates
 
