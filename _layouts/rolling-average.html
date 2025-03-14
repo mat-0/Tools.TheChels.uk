@@ -45,13 +45,6 @@
                 labels: values.map((_, index) => index + 1),
                 datasets: [
                     {
-                        label: 'Original Values',
-                        data: values,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1,
-                        fill: false
-                    },
-                    {
                         label: 'Rolling Average',
                         data: rollingAverages,
                         borderColor: 'rgba(192, 75, 75, 1)',
