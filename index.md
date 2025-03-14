@@ -14,7 +14,7 @@ seo: toolkit
 * [Extract Urls](/extract-urls) - Extract URLs from text.
 * [GitHub Issue Checker](/github-issue) - Check and manage GitHub issues.
 * [Monte Carlo Simulator](/monte-carlo) - Run Monte Carlo simulations and visualize results for agile teams
-* [Rolling Average Chart](/roilling-average) - A charting tool to calculate rolling averages
+* [Rolling Average Chart](/rolling-average) - A charting tool to calculate rolling averages
 
 ##  Manipulations
 
