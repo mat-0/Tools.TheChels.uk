@@ -1,9 +1,11 @@
 import json
 import yaml
+import config
 
 # Define the file paths
-json_file_path = '../_data/films.json'
-yaml_file_path = '../_data/films.yml'
+
+json_file_path = config.FILM_JSON
+yaml_file_path = config.FILM_OUT
 
 # Read the JSON file
 with open(json_file_path, 'r') as json_file:

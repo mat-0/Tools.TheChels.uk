@@ -2,11 +2,12 @@ import pathlib
 import requests
 import yaml
 import csv
+import config
+
 
 # Define file paths
-csv_file_path = pathlib.Path('NetflixViewingHistory.csv')
-yaml_file_path = pathlib.Path('films.yml')
-omdb_api_key = 'your_omdb_api_key'  # Replace with your actual OMDB API key
+
+omdb_api_key = config.OMDB_API_KEY
 
 def read_film_titles_from_csv(csv_file_path):
     film_titles = []
@@ -34,8 +35,8 @@ def write_film_details_to_yaml(film_details, yaml_file_path):
         yaml.dump({'films': film_details}, yaml_file)
 
 if __name__ == '__main__':
-    film_titles = read_film_titles_from_csv(csv_file_path)
-    write_film_titles_to_yaml(film_titles, yaml_file_path)
+    film_titles = read_film_titles_from_csv(config.NETFLIX_PATH)
+    write_film_titles_to_yaml(film_titles, config.FILM_OUT)
     # film_details = fetch_film_details_from_omdb(film_titles, omdb_api_key)
     # write_film_details_to_yaml(film_details, yaml_file_path)
     print('Films data saved to YAML file.')

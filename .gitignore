@@ -16,8 +16,6 @@ _site/
 # counterproductive to check this file into the repository.
 # Details at https://github.com/github/pages-gem/issues/768
 Gemfile.lock
-_python/github_post_add_film.py
-_python/run_film_lookup.py
 _data/castro_podcasts.opml
 _data/podcasts.yml
-_python/run_podcaster.py
+_python/config.py
