@@ -33,7 +33,7 @@ def load_film_file(file_path):
 
 def add_film_to_list(film_data, rating):
     film_code, film_title, film_year = film_data
-    film = {"Imdb": film_code, "Title": film_title, "Year": film_year, "Rating": rating.to_int() }
+    film = {"Imdb": film_code, "Title": film_title, "Year": film_year, "Rating": rating }
     new_films = load_film_file(OUTPUT_FILE)
     for f in new_films:
         if f["Imdb"] == film_code:
@@ -46,6 +46,7 @@ def add_film_to_list(film_data, rating):
 if __name__ == "__main__":
     film = input("Enter the film title: ")
     rating = input("Enter the film rating (0-10): ")
+    rating = int(rating)
     film_data = get_film_data(film)
     if film_data:
         add_film_to_list(film_data, rating)

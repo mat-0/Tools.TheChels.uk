@@ -19,3 +19,4 @@ Gemfile.lock
 _data/castro_podcasts.opml
 _data/podcasts.yml
 _python/config.py
+.DS_Store

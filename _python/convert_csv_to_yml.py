@@ -8,6 +8,8 @@ import config
 # Define file paths
 
 omdb_api_key = config.OMDB_API_KEY
+netflix_path = pathlib.Path(config.NETFLIX_PATH)
+film_out = pathlib.Path(config.FILM_OUT)
 
 def read_film_titles_from_csv(csv_file_path):
     film_titles = []
@@ -35,8 +37,8 @@ def write_film_details_to_yaml(film_details, yaml_file_path):
         yaml.dump({'films': film_details}, yaml_file)
 
 if __name__ == '__main__':
-    film_titles = read_film_titles_from_csv(config.NETFLIX_PATH)
-    write_film_titles_to_yaml(film_titles, config.FILM_OUT)
+    film_titles = read_film_titles_from_csv(netflix_path)
+    write_film_titles_to_yaml(film_titles, film_out)
     # film_details = fetch_film_details_from_omdb(film_titles, omdb_api_key)
     # write_film_details_to_yaml(film_details, yaml_file_path)
     print('Films data saved to YAML file.')
