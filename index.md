@@ -15,6 +15,7 @@ seo: toolkit
 * [GitHub Issue Checker](/github-issue) - Check and manage GitHub issues.
 * [Monte Carlo Simulator](/monte-carlo) - Run Monte Carlo simulations and visualize results for agile teams
 * [Rolling Average Chart](/rolling-average) - A charting tool to calculate rolling averages
+* [Hex Codes](/hex-codes) -Colors for the web
 
 ##  Manipulations
 
