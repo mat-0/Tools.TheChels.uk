@@ -7,6 +7,7 @@ seo: toolkit
 
 ## Tools
 
+* [Teaming](/teaming) -Helping Engineers in group programming sessions
 * [Pomodoro Timer](/pomodoro) - Use the Pomodoro technique for time management.
 * [Writing Style](/writing-style) - Analyze and improve writing style removing passive voice and weasel words
 * [YAML explorer](/yaml-explorer) - Explore and edit YAML files.

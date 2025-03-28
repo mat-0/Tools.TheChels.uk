@@ -1,0 +1,69 @@
+{% include header.html %}
+<h1 class="post-title">{{ page.title }}</h1>
+
+<div>
+    <form id="rolesForm">
+        <div id="rolesContainer">
+            <!-- Roles will be dynamically added here -->
+        </div>
+        <button type="button" id="rotateRolesButton" style="margin-top: 20px;">Rotate Roles</button>
+    </form>
+</div>
+
+<script>
+    const roles = [
+        "Driver",
+        "Navigator",
+        "Researcher",
+        "Timekeeper",
+        "Facilitator",
+        "Recorder",
+        "QA",
+        "Supporter",
+        "Observer",
+        "Mentor"
+    ];
+
+    function initializeRoles() {
+        const rolesContainer = document.getElementById('rolesContainer');
+        roles.forEach((role, index) => {
+            const roleDiv = document.createElement('div');
+            roleDiv.style.marginBottom = '10px';
+
+            const label = document.createElement('label');
+            label.textContent = `${role}: `;
+            label.setAttribute('for', `roleInput${index}`);
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.id = `roleInput${index}`;
+            input.name = `roleInput${index}`;
+            input.placeholder = `Enter name for ${role}`;
+
+            roleDiv.appendChild(label);
+            roleDiv.appendChild(input);
+            rolesContainer.appendChild(roleDiv);
+        });
+    }
+
+    function rotateRoles() {
+        const inputs = Array.from(document.querySelectorAll('#rolesContainer input'));
+        const names = inputs.map(input => input.value.trim()).filter(name => name !== '');
+
+        if (names.length > 0) {
+            const lastName = names.pop();
+            names.unshift(lastName);
+
+            inputs.forEach((input, index) => {
+                input.value = names[index] || '';
+            });
+        }
+    }
+
+    document.getElementById('rotateRolesButton').addEventListener('click', rotateRoles);
+
+    // Initialize roles on page load
+    initializeRoles();
+</script>
+
+{% include footer.html %}
