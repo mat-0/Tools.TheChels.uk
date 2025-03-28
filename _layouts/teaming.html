@@ -14,64 +14,64 @@
         <h2>Role Descriptions</h2>
         < id="roleDescriptions">
             <!-- Paragraph placeholders for roles -->
-<h4>Role 1: The Driver:</h4>
-<ul>
-    <li>Ask a clarifying question about what to type</li>
-    <li>Type something you disagree with</li>
-    <li>Use a keyboard shortcut</li>
-    <li>Learn something new about the tooling</li>
-    <li>Ignore a direct instruction from someone who isn't the navigator</li>
-    <li>Cross your arms and look sad when you don't have anything to type</li>
-</ul>
-<h4>Role 2: The Navigator:</h4>
-<ul>
-    <li>Ask for ideas</li>
-    <li>Filter the group's ideas and tell the driver exactly what to type</li>
-    <li>Tell the driver only your high-level intent and have them implement the details</li>
-    <li>Create a failing test, make it pass, refactor.</li>
-</ul>
-<h4>Role 3: The Nose:</h4>
-<ul>
-    <li>Point out repeated code</li>
-    <li>Point out a long line of code</li>
-    <li>Point out a complex conditional</li>
-    <li>Propose an action for removing a code smell</li>
-    <li>Identify a missing test case</li>
-</ul>
-<h4>Role 4: The Researcher:</h4>
-<ul>
-    <li>Find and share relevant documentation</li>
-    <li>Find and share relevant information from a blog</li>
-    <li>Find and share relevant information from a coding forum</li>
-    <li>Find and share a keyboard shortcut for the tool</li>
-</ul>
-<h4>Role 5: The Robot:</h4>
-<ul>
-    <li>Point out a repeated task in a tool</li>
-    <li>Point out a repeated aspect of the team process</li>
-    <li>Point out possible boilerplate code</li>
-    <li>Propose automating a repeated task</li>
-    <li>Propose pipeline improvements</li>
-</ul>
-<h4>Role 6: The Archivist:</h4>
-<ul>
-    <li>Draw up a plan on a visible chart/whiteboard/task list</li>
-    <li>Express an idea as taking shape using a visual medium</li>
-    <li>Articulate the current task at hand and make it visible to the group</li>
-    <li>Encourage and update the ReadMe</li>
-</ul>
-<h4>Role 7: The Cop:</h4>
-<ul>
-    <li>Make sure the tests are run and green</li>
-    <li>Point out when the team violates a process or working agreement</li>
-    <li>Capture design decisions and other technical details for the team</li>
-    <li>Watch out for fatigue or disinterest and bring people back into the group</li>
-    <li>Call out when people are not being heard or allowed to finish</li>
-    <li>Encourage naming conventions</li>
-</ul>
+            <h4>Role 1: The Driver:</h4>
+            <ul>
+                <li>Ask a clarifying question about what to type</li>
+                <li>Type something you disagree with</li>
+                <li>Use a keyboard shortcut</li>
+                <li>Learn something new about the tooling</li>
+                <li>Ignore a direct instruction from someone who isn't the navigator</li>
+                <li>Cross your arms and look sad when you don't have anything to type</li>
+            </ul>
+            <h4>Role 2: The Navigator:</h4>
+            <ul>
+                <li>Ask for ideas</li>
+                <li>Filter the group's ideas and tell the driver exactly what to type</li>
+                <li>Tell the driver only your high-level intent and have them implement the details</li>
+                <li>Create a failing test, make it pass, refactor.</li>
+            </ul>
+            <h4>Role 3: The Nose:</h4>
+            <ul>
+                <li>Point out repeated code</li>
+                <li>Point out a long line of code</li>
+                <li>Point out a complex conditional</li>
+                <li>Propose an action for removing a code smell</li>
+                <li>Identify a missing test case</li>
+            </ul>
+            <h4>Role 4: The Researcher:</h4>
+            <ul>
+                <li>Find and share relevant documentation</li>
+                <li>Find and share relevant information from a blog</li>
+                <li>Find and share relevant information from a coding forum</li>
+                <li>Find and share a keyboard shortcut for the tool</li>
+            </ul>
+            <h4>Role 5: The Robot:</h4>
+            <ul>
+                <li>Point out a repeated task in a tool</li>
+                <li>Point out a repeated aspect of the team process</li>
+                <li>Point out possible boilerplate code</li>
+                <li>Propose automating a repeated task</li>
+                <li>Propose pipeline improvements</li>
+            </ul>
+            <h4>Role 6: The Archivist:</h4>
+            <ul>
+                <li>Draw up a plan on a visible chart/whiteboard/task list</li>
+                <li>Express an idea as taking shape using a visual medium</li>
+                <li>Articulate the current task at hand and make it visible to the group</li>
+                <li>Encourage and update the ReadMe</li>
+            </ul>
+            <h4>Role 7: The Cop:</h4>
+            <ul>
+                <li>Make sure the tests are run and green</li>
+                <li>Point out when the team violates a process or working agreement</li>
+                <li>Capture design decisions and other technical details for the team</li>
+                <li>Watch out for fatigue or disinterest and bring people back into the group</li>
+                <li>Call out when people are not being heard or allowed to finish</li>
+                <li>Encourage naming conventions</li>
+            </ul>
 
-        </div>
     </div>
+</div>
 </div>
 
 <script>
@@ -108,10 +108,6 @@
             roleDiv.appendChild(input);
             rolesContainer.appendChild(roleDiv);
 
-            // Add paragraph placeholders for role descriptions
-            const roleParagraph = document.createElement('p');
-            roleParagraph.textContent = `${role}: [Description goes here]`;
-            roleDescriptions.appendChild(roleParagraph);
         });
     }
 
