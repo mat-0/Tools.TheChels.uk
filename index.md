@@ -7,16 +7,20 @@ seo: toolkit
 
 ## Tools
 
-* [Teaming](/teaming) -Helping Engineers in group programming sessions
+* [Teaming](/teaming) - Helping Engineers in group programming sessions
 * [Pomodoro Timer](/pomodoro) - Use the Pomodoro technique for time management.
+* [Monte Carlo Simulator](/monte-carlo) - Run Monte Carlo simulations and visualize results for agile teams
+* [Rolling Average Chart](/rolling-average) - A charting tool to calculate rolling averages
+* [Hex Codes](/hex-codes) - Colors for the web
+
+## Additional Helpers
+
 * [Writing Style](/writing-style) - Analyze and improve writing style removing passive voice and weasel words
 * [YAML explorer](/yaml-explorer) - Explore and edit YAML files.
 * [Paste Rich Text](/paste-rich-text) - Paste and format rich text.
 * [Extract Urls](/extract-urls) - Extract URLs from text.
 * [GitHub Issue Checker](/github-issue) - Check and manage GitHub issues.
-* [Monte Carlo Simulator](/monte-carlo) - Run Monte Carlo simulations and visualize results for agile teams
-* [Rolling Average Chart](/rolling-average) - A charting tool to calculate rolling averages
-* [Hex Codes](/hex-codes) - Colors for the web
+
 
 ##  Manipulations
 
