@@ -1,13 +1,21 @@
 {% include header.html %}
 <h1 class="post-title">{{ page.title }}</h1>
 
-<div>
-    <form id="rolesForm">
-        <div id="rolesContainer">
-            <!-- Roles will be dynamically added here -->
+<div style="display: flex; justify-content: space-between;">
+    <div style="width: 48%;">
+        <form id="rolesForm">
+            <div id="rolesContainer">
+                <!-- Roles will be dynamically added here -->
+            </div>
+            <button type="button" id="rotateRolesButton" style="margin-top: 20px;">Rotate Roles</button>
+        </form>
+    </div>
+    <div style="width: 48%;">
+        <h2>Role Descriptions</h2>
+        <div id="roleDescriptions">
+            <!-- Paragraph placeholders for roles -->
         </div>
-        <button type="button" id="rotateRolesButton" style="margin-top: 20px;">Rotate Roles</button>
-    </form>
+    </div>
 </div>
 
 <script>
@@ -23,7 +31,10 @@
 
     function initializeRoles() {
         const rolesContainer = document.getElementById('rolesContainer');
+        const roleDescriptions = document.getElementById('roleDescriptions');
+
         roles.forEach((role, index) => {
+            // Add input fields for roles
             const roleDiv = document.createElement('div');
             roleDiv.style.marginBottom = '10px';
 
@@ -40,6 +51,11 @@
             roleDiv.appendChild(label);
             roleDiv.appendChild(input);
             rolesContainer.appendChild(roleDiv);
+
+            // Add paragraph placeholders for role descriptions
+            const roleParagraph = document.createElement('p');
+            roleParagraph.textContent = `${role}: [Description goes here]`;
+            roleDescriptions.appendChild(roleParagraph);
         });
     }
 
