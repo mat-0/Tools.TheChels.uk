@@ -11,6 +11,8 @@
 <canvas id="monteCarloChart" width="400" height="200"></canvas>
 
 <script>
+    var monteCarloChartInstance; // Store the chart instance globally
+
     function runMonteCarlo() {
         var input = document.getElementById('inputNumbers').value;
         var target = Number(document.getElementById('targetNumber').value);
@@ -45,6 +47,12 @@
 
     function drawChart(data) {
         var ctx = document.getElementById('monteCarloChart').getContext('2d');
+
+        // Destroy the existing chart instance if it exists
+        if (monteCarloChartInstance) {
+            monteCarloChartInstance.destroy();
+        }
+
         var labels = Array.from(new Set(data.map(d => d.value)));
         var highLowData = labels.map(label => {
             var filtered = data.filter(d => d.value === label);
@@ -55,7 +63,7 @@
             };
         });
 
-        new Chart(ctx, {
+        monteCarloChartInstance = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels,
