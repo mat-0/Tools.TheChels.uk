@@ -6,6 +6,12 @@ html {
     height: 100%;
     scroll-behavior: smooth;
 }
+
+@font-face {
+    font-family: "TheChelsUK";
+    src: url("fonts/TheChelsUk.woff") format("woff");
+}
+
 // 16px = 1em
 
 $background: #f5f4f4;
