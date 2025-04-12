@@ -22,3 +22,4 @@ _python/config.py
 .DS_Store
 _python/__pycache__/
 converts/
+_python/scratch.py

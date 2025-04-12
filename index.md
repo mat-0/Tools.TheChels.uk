@@ -21,8 +21,7 @@ seo: toolkit
 * [Extract Urls](/extract-urls) - Extract URLs from text.
 * [GitHub Issue Checker](/github-issue) - Check and manage GitHub issues.
 
-
-##  Manipulations
+## Manipulations
 
 * [Escape Entities](/escape-entities) - Convert special characters to HTML entities.
 * [JSON Pretty Printer](/json-pretty-printer) - Format JSON data for readability.
@@ -31,7 +30,6 @@ seo: toolkit
 * [QR Code](/qr) - Generate QR codes.
 * [SQL Pretty Printer](/sql-pretty-printer) - Format SQL queries for readability.
 * [String sorter](/string-sorter) - Reverse and sort strings.
-
 
 ## Images
 
