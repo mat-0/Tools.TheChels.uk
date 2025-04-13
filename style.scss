@@ -9,14 +9,14 @@ html {
 
 @font-face {
     font-family: "TheChelsUKLight";
-    src: url("fonts/Supreme-Light.woff") format("woff");
+    src: url("fonts/TheChelsLight.woff") format("woff");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: "TheChelsUKMedium";
-    src: url("fonts/Supreme-Medium.woff") format("woff");
+    src: url("fonts/TheChelsMedium.woff") format("woff");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -29,7 +29,8 @@ $primary: #04100d;
 $secondary: #005ca3;
 $links: #295147;
 $accent: #cec452;
-$font-stack: "TheChelsUKMedium", -system-ui, "Gill Sans", sans-serif;
+$font-stack: "TheChelsLight", -system-ui, "Gill Sans", sans-serif;
+$header-stack: "TheChelsUKMedium", -system-ui, "Gill Sans", sans-serif;
 $font-mono: ui-monospace, monospace, "Courier New";
 
 .primary {
@@ -216,7 +217,7 @@ h6 {
     position: relative;
     display: block;
     margin-top: 0.75em;
-    font-family: "TheChelsUKLight", sans-serif;
+    font-family: $header-stack
 
     &:hover::after {
         content: " #";
