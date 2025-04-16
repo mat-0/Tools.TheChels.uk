@@ -6,31 +6,27 @@ html {
     height: 100%;
     scroll-behavior: smooth;
 }
-
-@font-face {
-    font-family: "TheChelsUKLight";
-    src: url("fonts/TheChelsLight.woff") format("woff");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: "TheChelsUKMedium";
-    src: url("fonts/TheChelsMedium.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
 // 16px = 1em
+
+@font-face {
+    font-family: "TheChelsLight";
+    src: url("fonts/TheChelsLight.woff") format("woff");
+}
+
+@font-face {
+    font-family: "TheChelsMedium";
+    src: url("fonts/TheChelsMedium.woff") format("woff");
+    font-weight: bold;
+}
 
 $background: #f5f4f4;
 $primary: #04100d;
-$secondary: #EF476F;
+$secondary: #005ca3;
 $links: #295147;
-$accent: #FFD166;
-$font-stack: "TheChelsLight", -system-ui, "Gill Sans", sans-serif;
-$header-stack: "TheChelsMedium", -system-ui, "Gill Sans", sans-serif;
+$accent: #cec452;
+$code: #c0deff;
+$font-stack: TheChelsLight, -system-ui, "Gill Sans", sans-serif;
+$header-stack: TheChelsMedium, -system-ui, "Gill Sans", sans-serif;
 $font-mono: ui-monospace, monospace, "Courier New";
 
 .primary {
@@ -45,7 +41,6 @@ $font-mono: ui-monospace, monospace, "Courier New";
 .accent {
     color: $accent;
 }
-
 
 .highlight > pre {
     background: #a2a2a2;
@@ -212,7 +207,7 @@ h6 {
     position: relative;
     display: block;
     margin-top: 0.75em;
-    font-family: $header-stack
+    font-family: $header-stack;
 
     &:hover::after {
         content: " #";
