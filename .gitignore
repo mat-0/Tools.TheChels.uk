@@ -23,3 +23,4 @@ _python/config.py
 _python/__pycache__/
 converts/
 _python/scratch.py
+_layouts/devops.html
