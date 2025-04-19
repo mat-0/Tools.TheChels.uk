@@ -1,4 +1,10 @@
-# Symptoms
+---
+layout: index
+title: Symptoms
+permalink: /ensemblism/symptoms
+seo: Symptoms that are remedied by group programming
+
+---
 
 - You have a key person depedency and struggle to find time to generate documentation.
 - Your onboarding process needs improvement and you struggle to find engineers free to support new staff.
