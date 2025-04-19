@@ -1,5 +1,5 @@
 ---
-layout: index
+layout: page
 title: Symptoms
 permalink: /ensemblism/symptoms
 seo: Symptoms that are remedied by group programming
