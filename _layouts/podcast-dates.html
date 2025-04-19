@@ -2,6 +2,53 @@
 
 <h1 class="post-title">{{ page.title }}</h1>
 <style>
+    .upload-container {
+        margin: 20px 0;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .file-upload {
+        margin-right: 10px;
+    }
+
+    .submit-btn {
+        padding: 5px 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    #results-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    #results-table th,
+    #results-table td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    #results-table th {
+        background-color: #f2f2f2;
+    }
+
+    .loading {
+        display: none;
+        margin: 20px 0;
+    }
+
+    .error {
+        color: red;
+        display: none;
+        margin: 20px 0;
+    }
 </style>
 
 <div class="upload-container">
@@ -10,5 +57,230 @@
         <input type="file" id="file-upload" name="file" accept=".opml" required>
         <button type="submit" class="submit-btn">Upload</button>
     </form>
+</div>
+
+<div class="loading" id="loading">Processing OPML file...</div>
+<div class="error" id="error-message"></div>
+
+<div id="results-container" style="display: none;">
+    <h2>Podcast Episodes</h2>
+    <table id="results-table">
+        <thead>
+            <tr>
+                <th>Podcast Name</th>
+                <th>Latest Episode</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody id="results-body">
+            <!-- Results will be inserted here -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    document.getElementById('upload-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const fileInput = document.getElementById('file-upload');
+        const file = fileInput.files[0];
+
+        if (!file) {
+            showError('Please select an OPML file');
+            return;
+        }
+
+        document.getElementById('loading').style.display = 'block';
+        document.getElementById('error-message').style.display = 'none';
+        document.getElementById('results-container').style.display = 'none';
+
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            try {
+                const parser = new DOMParser();
+                const opml = parser.parseFromString(e.target.result, 'text/xml');
+                processOPML(opml);
+            } catch (error) {
+                showError('Error parsing OPML file: ' + error.message);
+            }
+        };
+
+        reader.onerror = function () {
+            showError('Error reading the file');
+        };
+
+        reader.readAsText(file);
+    });
+
+    function processOPML(opml) {
+        try {
+            const outlines = opml.querySelectorAll('outline[type="rss"]');
+            const promises = [];
+
+            // Display loading message
+            document.getElementById('loading').textContent = `Processing ${outlines.length} podcasts...`;
+
+            outlines.forEach(outline => {
+                const title = outline.getAttribute('text') || outline.getAttribute('title');
+                const xmlUrl = outline.getAttribute('xmlUrl');
+
+                if (xmlUrl) {
+                    const promise = fetchRSSFeed(xmlUrl, title);
+                    promises.push(promise);
+                } else {
+                    promises.push(Promise.resolve({
+                        title: title || 'Unknown Podcast',
+                        latestEpisode: 'N/A',
+                        latestDate: 'N/A'
+                    }));
+                }
+            });
+
+            // Process all RSS feeds and display results when done
+            Promise.allSettled(promises)
+                .then(results => {
+                    const podcastData = results
+                        .filter(result => result.status === 'fulfilled')
+                        .map(result => result.value)
+                        .sort((a, b) => {
+                            // Sort by date (latest first)
+                            if (a.latestDate === 'N/A') return 1;
+                            if (b.latestDate === 'N/A') return -1;
+                            return new Date(b.latestDate) - new Date(a.latestDate);
+                        });
+
+                    displayResults(podcastData);
+                })
+                .catch(error => {
+                    showError('Error processing feeds: ' + error.message);
+                });
+        } catch (error) {
+            showError('Error processing OPML data: ' + error.message);
+        }
+    }
+
+    async function fetchRSSFeed(url, podcastTitle) {
+        // Use a CORS proxy to fetch the RSS feed
+        const corsProxy = 'https://corsproxy.io/?';
+        const response = await fetch(corsProxy + encodeURIComponent(url));
+
+        if (!response.ok) {
+            return {
+                title: podcastTitle || 'Unknown Podcast',
+                latestEpisode: 'Failed to fetch',
+                latestDate: 'N/A'
+            };
+        }
+
+        const text = await response.text();
+        return parseRSSFeed(text, podcastTitle);
+    }
+
+    function parseRSSFeed(rssText, podcastTitle) {
+        try {
+            const parser = new DOMParser();
+            const rss = parser.parseFromString(rssText, 'text/xml');
+
+            // Check for errors in parsing
+            const parserError = rss.querySelector('parsererror');
+            if (parserError) {
+                return {
+                    title: podcastTitle || 'Unknown Podcast',
+                    latestEpisode: 'Invalid RSS feed',
+                    latestDate: 'N/A'
+                };
+            }
+
+            // Get the most recent item (episode)
+            const items = rss.querySelectorAll('item');
+            if (items.length === 0) {
+                return {
+                    title: podcastTitle || 'Unknown Podcast',
+                    latestEpisode: 'No episodes found',
+                    latestDate: 'N/A'
+                };
+            }
+
+            const latestItem = items[0];
+            const episodeTitle = latestItem.querySelector('title')?.textContent || 'Untitled Episode';
+
+            // Try different date formats (pubDate, dc:date, etc.)
+            let dateString = latestItem.querySelector('pubDate')?.textContent;
+            if (!dateString) {
+                dateString = latestItem.querySelector('dc\\:date')?.textContent;
+            }
+            if (!dateString) {
+                dateString = latestItem.querySelector('date')?.textContent;
+            }
+
+            let formattedDate = 'Unknown Date';
+            if (dateString) {
+                try {
+                    const date = new Date(dateString);
+                    formattedDate = date.toLocaleDateString();
+                    // Keep the ISO string for sorting
+                    dateIso = date.toISOString();
+                } catch (e) {
+                    formattedDate = dateString;
+                    dateIso = 'N/A';
+                }
+            } else {
+                dateIso = 'N/A';
+            }
+
+            return {
+                title: podcastTitle || rss.querySelector('channel > title')?.textContent || 'Unknown Podcast',
+                latestEpisode: episodeTitle,
+                latestDate: formattedDate,
+                dateIso: dateIso
+            };
+        } catch (error) {
+            return {
+                title: podcastTitle || 'Unknown Podcast',
+                latestEpisode: 'Error parsing feed',
+                latestDate: 'N/A',
+                dateIso: 'N/A'
+            };
+        }
+    }
+
+    function displayResults(results) {
+        const tableBody = document.getElementById('results-body');
+        tableBody.innerHTML = '';
+
+        if (results.length === 0) {
+            showError('No podcast feeds found in the OPML file');
+            return;
+        }
+
+        results.forEach(podcast => {
+            const row = document.createElement('tr');
+
+            const titleCell = document.createElement('td');
+            titleCell.textContent = podcast.title;
+            row.appendChild(titleCell);
+
+            const episodeCell = document.createElement('td');
+            episodeCell.textContent = podcast.latestEpisode;
+            row.appendChild(episodeCell);
+
+            const dateCell = document.createElement('td');
+            dateCell.textContent = podcast.latestDate;
+            row.appendChild(dateCell);
+
+            tableBody.appendChild(row);
+        });
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('results-container').style.display = 'block';
+    }
+
+    function showError(message) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('error-message').style.display = 'block';
+        document.getElementById('error-message').textContent = message;
+    }
+</script>
 
 {% include footer.html %}
