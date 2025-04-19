@@ -162,8 +162,8 @@
 
     async function fetchRSSFeed(url, podcastTitle) {
         // Use a CORS proxy to fetch the RSS feed
-        const corsProxy = 'https://corsproxy.io/?';
-        const response = await fetch(corsProxy + encodeURIComponent(url));
+        const proxyUrl = 'https://api.allorigins.win/raw?url=';
+        const response = await fetch(proxyUrl + encodeURIComponent(url));
 
         if (!response.ok) {
             return {
