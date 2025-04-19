@@ -1,3 +1,12 @@
+---
+layout: index
+title: Resources
+permalink: /ensemblism/resources
+seo: Resources for group programming
+
+---
+
+
 > Mob/Ensemble programming is a practice that yields significant value, facilitates effective knowledge sharing, reduces the lead time for changes, enhances work review processes, mitigates business risk, and fosters job satisfaction.
 > When teams integrate it with other critical practices like trunk-based development and test-driven development, they can attain exceptional outcomes.
 > I have yet to see one team that regretted adopting this way of working.
