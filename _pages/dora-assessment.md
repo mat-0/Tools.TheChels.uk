@@ -8,7 +8,7 @@ permalink: /dora-assessment
 ---
 
 
-# Review of the 24 key capabilities of the Accelerate DevOps survey outcomes.
+## Review of the 24 key capabilities of the Accelerate DevOps survey outcomes
 
 **Scoring:** 1 (poor) to 5 (excellent)
 **Dated:**
