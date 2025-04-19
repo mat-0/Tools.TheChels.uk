@@ -94,16 +94,21 @@ def main():
         reverse=True
     )
 
-    # Generate the markdown
+    # Generate the markdown with a table
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write("# Latest Podcast Episodes\n\n")
         f.write(f"*Updated on {datetime.datetime.now().strftime('%Y-%m-%d')}*\n\n")
 
+        # Create a markdown table
+        f.write("| Podcast | Latest Episode | Published |\n")
+        f.write("|---------|----------------|----------|\n")
+
         for episode in results:
-            f.write(f"## {episode['podcast_title']}\n\n")
-            f.write(f"**Latest Episode:** {episode['episode_title']}\n\n")
-            f.write(f"**Published:** {episode['pub_date']}\n\n")
-            f.write("---\n\n")
+            # Escape pipe characters in titles to prevent breaking the table format
+            podcast_title = episode['podcast_title'].replace('|', '\\|')
+            episode_title = episode['episode_title'].replace('|', '\\|')
+
+            f.write(f"| {podcast_title} | {episode_title} | {episode['pub_date']} |\n")
 
     print(f"Results written to {OUTPUT_FILE}")
 
