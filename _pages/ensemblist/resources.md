@@ -1,5 +1,5 @@
 ---
-layout: index
+layout: page
 title: Resources
 permalink: /ensemblism/resources
 seo: Resources for group programming
