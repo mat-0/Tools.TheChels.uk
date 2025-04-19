@@ -1,3 +1,11 @@
+---
+layout: index
+title: Roles
+permalink: /ensemblism/roles
+seo: roles for group programming
+
+---
+
 ### Role 1: Navigator:
 
 - Ask for ideas
