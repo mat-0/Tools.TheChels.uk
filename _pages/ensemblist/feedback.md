@@ -1,5 +1,5 @@
 ---
-layout: index
+layout: page
 title: Feedback
 permalink: /ensemblism/feedback
 seo: feedback form
