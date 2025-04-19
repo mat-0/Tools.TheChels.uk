@@ -12,6 +12,7 @@ seo: toolkit
 * [Monte Carlo Simulator](/monte-carlo) - Run Monte Carlo simulations and visualize results for agile teams
 * [Rolling Average Chart](/rolling-average) - A charting tool to calculate rolling averages
 * [Hex Codes](/hex-codes) - Colors for the web
+* [Podcast Grid](/podcast-grid) - Podcast artwork as a grid
 
 ## Additional Helpers
 
