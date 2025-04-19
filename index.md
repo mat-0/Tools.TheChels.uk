@@ -54,7 +54,7 @@ seo: toolkit
 
 * [Feedback](/ensemblism/feedback)
 * [Resources](/ensemblism/resources)
-* [Roles](/ensenblism/roles)
+* [Roles](/ensemblism/roles)
 * [Rules](/ensemblism/rules)
 * [Symptoms](/ensemblism/symptoms) 
 
