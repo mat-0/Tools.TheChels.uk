@@ -1,5 +1,10 @@
-# Ensemblism
+---
+layout: index
+title: Rules
+permalink: /ensemblism/rules
+seo: Rules for group programming
 
+---
 
 ## 1. Take breaks
 Tools like Pomodoro help remind teams to take breaks, but sometimes team members are accustomed to having to always be at their desks so they feel guilty stepping away from an ensemble, encourage regular breaks and encourage people to step away when needed.
