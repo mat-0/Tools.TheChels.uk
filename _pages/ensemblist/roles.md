@@ -1,5 +1,5 @@
 ---
-layout: index
+layout: page
 title: Roles
 permalink: /ensemblism/roles
 seo: roles for group programming
