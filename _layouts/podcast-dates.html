@@ -1,0 +1,14 @@
+{% include header.html %}
+
+<h1 class="post-title">{{ page.title }}</h1>
+<style>
+</style>
+
+<div class="upload-container">
+    <form id="upload-form" method="post" enctype="multipart/form-data">
+        <label for="file-upload" class="file-upload">Choose a file:</label>
+        <input type="file" id="file-upload" name="file" accept=".opml" required>
+        <button type="submit" class="submit-btn">Upload</button>
+    </form>
+
+{% include footer.html %}
