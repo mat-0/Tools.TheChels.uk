@@ -50,7 +50,7 @@ seo: toolkit
 * [Engineering Principles](/principles)
 * [Dora Assessment](/dora-assessment)
 
-## Ensemblism Social Programming
+## Ensemblism Social Programming
 
 * [Feedback](/ensemblism/feedback)
 * [Resources](/ensemblism/resources)
