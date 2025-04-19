@@ -1,5 +1,5 @@
 ---
-layout: index
+layout: page
 title: Rules
 permalink: /ensemblism/rules
 seo: Rules for group programming
