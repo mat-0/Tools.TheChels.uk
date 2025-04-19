@@ -13,9 +13,9 @@ seo: Resources for group programming
 > I've heard some objections about exhaustion or being heavy for those favoring silo-working.
 > Teams, however, should not work as groups of silos, and social programming practices can be executed sustainably and inclusively, involving and engaging both extroverts and introverts, transforming team gatherings into collaborative workshops rather than conventional meetings.
 
-- https://trello.com/b/1lfMkCOh/software-profession-resources
-- https://www.mobmentalityshow.com/ / https://www.youtube.com/@mobmentalityshow
-- https://www.remotemobprogramming.org/
-- https://www.industriallogic.com/blog/a-few-tips-for-mob-programming/
-- https://www.amazon.co.uk/Software-Teaming-Programming-Whole-Team-Approach/dp/B0BLG1QTYK
-- https://www.amazon.co.uk/Code-Wisdom-Crowd-Mark-Pearl/dp/1680506153/ref=sr_1_6
+- <https://trello.com/b/1lfMkCOh/software-profession-resources>
+- <https://www.mobmentalityshow.com/> / <https://www.youtube.com/@mobmentalityshow>
+- <https://www.remotemobprogramming.org/>
+- <https://www.industriallogic.com/blog/a-few-tips-for-mob-programming/>
+- <https://www.amazon.co.uk/Software-Teaming-Programming-Whole-Team-Approach/dp/B0BLG1QTYK>
+- <https://www.amazon.co.uk/Code-Wisdom-Crowd-Mark-Pearl/dp/1680506153/>
