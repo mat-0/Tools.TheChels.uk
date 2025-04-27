@@ -178,6 +178,12 @@
       return results;
     }
 
+    function escapeHTML(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
     function displayResults(weasels, passives, duplicates) {
       const resultsDiv = document.getElementById('results');
       resultsDiv.innerHTML = '';
@@ -190,7 +196,7 @@
     ${weasels.length === 0 ? 'No weasel words found.' :
           weasels.map(w => `
         <div class="warning">
-          Found "<span class="highlight">${w.word}</span>" in: "${w.context}"
+          Found "<span class="highlight">${escapeHTML(w.word)}</span>" in: "${escapeHTML(w.context)}"
         </div>
       `).join('')}
   `;
@@ -218,7 +224,7 @@
     ${duplicates.length === 0 ? 'No duplicate words found.' :
           duplicates.map(d => `
         <div class="warning">
-          Found duplicate word "<span class="highlight">${d.word}</span>" in: "${d.context}"
+          Found duplicate word "<span class="highlight">${escapeHTML(d.word)}</span>" in: "${escapeHTML(d.context)}"
         </div>
       `).join('')}
   `;
