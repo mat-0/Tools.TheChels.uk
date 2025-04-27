@@ -1,0 +1,13 @@
+---
+layout: empty
+---
+
+# Security
+
+Contact: security@thechels.uk
+Encryption: https://thechels.uk/pgp
+
+Preferred-Languages: en
+Canonical: /.well-known/security.txt
+
+Thank you for sharing responsibly

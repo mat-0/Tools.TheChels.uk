@@ -1,0 +1,19 @@
+---
+layout: empty
+---
+
+# Privacy Policy
+
+Effective Date: 2023-10-01
+1. Introduction
+We value your privacy and are committed to protecting your personal data.
+This privacy policy outlines how we collect, use, and safeguard your information.
+
+2. Information We Collect
+- None
+
+3. How We Use Your Information
+- We don't
+
+4. Data Security
+We implement appropriate security measures to protect your personal data from unauthorized access, alteration, disclosure, or destruction.
