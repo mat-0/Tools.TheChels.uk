@@ -152,8 +152,19 @@
         document.getElementById('team-name-display').textContent = teamName;
 
         const projectLink = document.getElementById('project-link');
-        projectLink.href = projectUrl;
-        projectLink.textContent = 'View Project';
+        try {
+            const url = new URL(projectUrl);
+            if (url.protocol === 'http:' || url.protocol === 'https:') {
+                projectLink.href = projectUrl;
+                projectLink.textContent = 'View Project';
+            } else {
+                throw new Error('Invalid protocol');
+            }
+        } catch (error) {
+            console.error('Invalid project URL:', error);
+            projectLink.href = '#';
+            projectLink.textContent = 'Invalid Project URL';
+        }
 
         const backlogLink = document.getElementById('backlog-link');
         const backlogLinkSeparator = document.getElementById('backlog-link-separator');
