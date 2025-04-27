@@ -14,6 +14,12 @@
     const output = document.getElementById('output');
     const copyButton = document.getElementById('copy-button');
 
+    function sanitizeHTML(html) {
+        const temp = document.createElement('div');
+        temp.textContent = html;
+        return temp.innerHTML;
+    }
+
     input.addEventListener('paste', function (e) {
         e.preventDefault();
 
@@ -21,7 +27,7 @@
         const pastedData = clipboardData.getData('text/html');
 
         const temp = document.createElement('div');
-        temp.innerHTML = pastedData;
+        temp.innerHTML = sanitizeHTML(pastedData);
 
         const links = temp.getElementsByTagName('a');
         const urls = Array.from(links)
