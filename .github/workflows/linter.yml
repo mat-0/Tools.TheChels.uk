@@ -1,17 +1,22 @@
 name: Linter
 on:
-  pull_request:
-  workflow_dispatch:
+    pull_request:
+    workflow_dispatch:
+
+permissions:
+    contents: read
+    pull-requests: write
+
 jobs:
-  build:
-    name: Linter
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-      - name: Linter
-        uses: github/super-linter/slim@v7
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    build:
+        name: Linter
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+            - name: Linter
+              uses: github/super-linter/slim@v7
+              env:
+                  VALIDATE_ALL_CODEBASE: false
+                  DEFAULT_BRANCH: main
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
