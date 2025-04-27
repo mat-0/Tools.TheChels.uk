@@ -6,4 +6,4 @@ Hopefully helpful tools and a bit of a playground for experiments. The site uses
 
 ## Configuration
 
-There are several optional settings for you to configure. Use the example `_config.yml` file in the repo and use the documentation below to configure your site:
+There are several optional settings for you to configure. Use the `_config.yml` file in the repo.
