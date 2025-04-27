@@ -170,10 +170,23 @@
         const backlogLinkSeparator = document.getElementById('backlog-link-separator');
 
         if (backlogUrl) {
-            backlogLink.href = backlogUrl;
-            backlogLink.textContent = 'View Backlog';
-            backlogLink.style.display = 'inline';
-            backlogLinkSeparator.style.display = 'inline';
+            try {
+                const url = new URL(backlogUrl);
+                if (url.protocol === 'http:' || url.protocol === 'https:') {
+                    backlogLink.href = backlogUrl;
+                    backlogLink.textContent = 'View Backlog';
+                    backlogLink.style.display = 'inline';
+                    backlogLinkSeparator.style.display = 'inline';
+                } else {
+                    throw new Error('Invalid protocol');
+                }
+            } catch (error) {
+                console.error('Invalid backlog URL:', error);
+                backlogLink.href = '#';
+                backlogLink.textContent = 'Invalid Backlog URL';
+                backlogLink.style.display = 'inline';
+                backlogLinkSeparator.style.display = 'inline';
+            }
         } else {
             backlogLink.style.display = 'none';
             backlogLinkSeparator.style.display = 'none';
