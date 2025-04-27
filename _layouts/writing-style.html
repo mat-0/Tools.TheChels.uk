@@ -210,7 +210,7 @@
     ${passives.length === 0 ? 'No passive voice constructions found.' :
           passives.map(p => `
         <div class="warning">
-          Found passive voice "<span class="highlight">${p.construction}</span>" in: "${p.context}"
+          Found passive voice "<span class="highlight">${escapeHTML(p.construction)}</span>" in: "${escapeHTML(p.context)}"
         </div>
       `).join('')}
   `;
