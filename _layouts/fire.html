@@ -22,12 +22,17 @@
 
             <div class="form-group">
                 <label for="currentAssets">Current Asset Value (£):</label>
-                <input type="number" id="currentAssets" min="0" value="250000" required>
+                <input type="number" id="currentAssets" min="0" value="200000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="monthlyContributions">Monthly Contributions (£):</label>
+                <input type="number" id="monthlyContributions" min="0" value="4000" required>
             </div>
 
             <div class="form-group">
                 <label for="growthRate">Investment Growth Rate (%):</label>
-                <input type="number" id="growthRate" min="0" max="20" step="0.1" value="7" required>
+                <input type="number" id="growthRate" min="0" max="20" step="0.1" value="6" required>
             </div>
 
             <div class="form-group">
@@ -182,6 +187,7 @@
             const retirementAge = parseInt(document.getElementById('retirementAge').value);
             const annualSpending = parseFloat(document.getElementById('annualSpending').value);
             const currentAssets = parseFloat(document.getElementById('currentAssets').value);
+            const monthlyContributions = parseFloat(document.getElementById('monthlyContributions').value);
             const growthRate = parseFloat(document.getElementById('growthRate').value) / 100;
             const inflationRate = parseFloat(document.getElementById('inflationRate').value) / 100;
             const withdrawalRate = parseFloat(document.getElementById('withdrawalRate').value) / 100;
@@ -206,6 +212,7 @@
                 retirementAge,
                 annualSpending,
                 currentAssets,
+                monthlyContributions,
                 growthRate,
                 inflationRate,
                 withdrawalRate,
@@ -225,7 +232,7 @@
             resultsContainer.scrollIntoView({ behavior: 'smooth' });
         });
 
-        function calculateRetirementProjection(currentAge, retirementAge, annualSpending, currentAssets, growthRate, inflationRate, withdrawalRate, hasDefinedBenefit, definedBenefitAmount, definedBenefitStartYear, hasStatePension, statePensionAmount, statePensionStartAge) {
+        function calculateRetirementProjection(currentAge, retirementAge, annualSpending, currentAssets, monthlyContributions, growthRate, inflationRate, withdrawalRate, hasDefinedBenefit, definedBenefitAmount, definedBenefitStartYear, hasStatePension, statePensionAmount, statePensionStartAge) {
             const maxAge = 100;
             const years = maxAge - currentAge + 1;
             const reducedSpendingAge = 75; // Age when spending becomes flat (ignoring inflation)
@@ -246,7 +253,7 @@
                     portfolioWithdrawalNeeded: 0,
                     totalIncome: 0
                 });
-                currentValue = currentValue * (1 + growthRate);
+                currentValue = currentValue * (1 + growthRate) + (monthlyContributions * 12);
             }
 
             // Withdrawal phase
@@ -257,17 +264,23 @@
 
                 // Calculate spending based on age
                 let inflationAdjustedSpending;
+                let totalDesiredSpending;
 
                 if (age < reducedSpendingAge) {
                     // Before age 75, normal inflation adjustment
                     inflationAdjustedSpending = annualSpending * Math.pow(1 + inflationRate, age - retirementAge);
+                    totalDesiredSpending = inflationAdjustedSpending;
                 } else {
-                    // After age 75, use flat amount equal to the original annualSpending
+                    // After age 75, flat spending plus pension benefits
                     inflationAdjustedSpending = annualSpending;
+                    // For ages 75+, we want total spending to be annualSpending + pension benefits
+                    totalDesiredSpending = annualSpending + dbIncome + spIncome;
                 }
 
                 // Calculate how much needs to be withdrawn from portfolio
-                const requiredFromPortfolio = Math.max(0, inflationAdjustedSpending - dbIncome - spIncome);
+                const requiredFromPortfolio = age < reducedSpendingAge ?
+                    Math.max(0, inflationAdjustedSpending - dbIncome - spIncome) :
+                    annualSpending; // After age 75, withdraw full annual spending regardless of pension income
 
                 // If funds were already exhausted in a previous year, skip calculation but keep the age in our data
                 if (fundsExhaustedAge !== null) {
@@ -280,6 +293,7 @@
                         definedBenefitIncome: dbIncome,
                         portfolioWithdrawalNeeded: 0,
                         totalIncome: dbIncome + spIncome,
+                        totalDesiredSpending: totalDesiredSpending,
                         spendingRequired: inflationAdjustedSpending,
                         isFlatSpending: age >= reducedSpendingAge,
                         fundsExhausted: true
@@ -301,6 +315,7 @@
                         definedBenefitIncome: dbIncome,
                         portfolioWithdrawalNeeded: currentValue, // Only what's left
                         totalIncome: dbIncome + spIncome + currentValue,
+                        totalDesiredSpending: totalDesiredSpending,
                         spendingRequired: inflationAdjustedSpending,
                         isFlatSpending: age >= reducedSpendingAge,
                         fundsExhausted: true
@@ -319,12 +334,13 @@
                     definedBenefitIncome: dbIncome,
                     portfolioWithdrawalNeeded: requiredFromPortfolio,
                     totalIncome: dbIncome + spIncome + requiredFromPortfolio,
+                    totalDesiredSpending: totalDesiredSpending,
                     spendingRequired: inflationAdjustedSpending,
                     isFlatSpending: age >= reducedSpendingAge
                 });
 
-                // Apply withdrawal and growth
-                currentValue = Math.max(0, (currentValue - requiredFromPortfolio) * (1 + growthRate));
+                // Apply withdrawal and growth - no monthly contributions during retirement
+                currentValue = Math.max(0, (currentValue - requiredFromPortfolio) * (1 + realGrowthRate));
             }
 
             // Calculate required nest egg accounting for flat spending in later years
@@ -507,25 +523,15 @@
             if (!incomeChartContainer) {
                 incomeChartContainer = document.createElement('div');
                 incomeChartContainer.id = 'incomeChartContainer';
-                incomeChartContainer.style.width = '100%';
-                incomeChartContainer.style.float = 'none';
-                incomeChartContainer.style.marginTop = '30px';
+                incomeChartContainer.className = 'chart-container';
                 incomeChartContainer.style.height = '400px';
+                incomeChartContainer.style.marginTop = '30px';
 
                 const canvas = document.createElement('canvas');
                 canvas.id = 'incomeChart';
                 incomeChartContainer.appendChild(canvas);
 
-                document.querySelector('.chart-container').appendChild(incomeChartContainer);
-            } else {
-                incomeChartContainer.style.width = '100%';
-                incomeChartContainer.style.float = 'none';
-            }
-
-            // Create clearfix element - no longer needed with full width layout
-            let clearfix = document.querySelector('.chart-clearfix');
-            if (clearfix) {
-                clearfix.remove();
+                document.querySelector('.chart-container').parentNode.appendChild(incomeChartContainer);
             }
 
             // Create asset chart
