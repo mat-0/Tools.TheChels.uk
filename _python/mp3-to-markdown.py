@@ -1,14 +1,13 @@
 import config
 import os
+import subprocess
+import sys
 from markitdown import MarkItDown
-
 
 path = config.PATH
 FOLDER = f"{path}/converts/"
 
-
-
-if __name__ == '__main__':
+def run_convert():
     for filename in os.listdir(FOLDER):
         if filename.endswith('.mp3'):
             input_file = os.path.join(FOLDER, filename)
@@ -21,3 +20,7 @@ if __name__ == '__main__':
             with open(output_file, 'w', encoding='utf-8') as f:
                 f.write(outcome)
                 print(f"Markdown content written to {output_file}")
+
+
+if __name__ == '__main__':
+    run_convert()
