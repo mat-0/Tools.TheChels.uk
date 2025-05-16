@@ -27,7 +27,7 @@ permalink: /interview-template
 - For senior hires I'd ask what stopped them from changing it?
 - What's their preferred way of working, ensemble? pair? alone? TDD? BDD?
 
-## Q3 What's your approach to testing? And can you talk us through a recent bug and its resolution.
+## Q3 What's your approach to testing? And can you talk us through a recent bug and its resolution
 
 - Looking for test pyramid knowledge and different testing types and then a deep dive into a bug.
 - A good follow up is if a test was added to the regression or what would they do differently next time.
@@ -53,8 +53,8 @@ permalink: /interview-template
 - If it's something they are proud of they should be open and be able to talk in detail.
 - Always probe technically to see if they genuinely understand and
 
-w
 active vs it being done in the team.
+
 - Confirm and challenge what were the outcomes.
 
 ## Q7 What questions do you have for us?
@@ -62,7 +62,7 @@ active vs it being done in the team.
 -Be ready and expect to describe ways of working, team structures, agile, progression, culture, if there is anything you are unsure about always ask them what would good look like to them? What would be their preference? This makes it easy to agree or acknowledge.
 Probe for more.
 
-## Finally.
+## Finally
 
 - Ask salary expectations (recruiters inflate!)
 - Explain the next steps in the process.
