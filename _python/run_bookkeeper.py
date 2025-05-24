@@ -42,15 +42,17 @@ def download_book_cover(book_data):
     isbn_key = book_data["isbn"]
     if isinstance(isbn_key, list):
         isbn_key = isbn_key[0]
-        isbn_key = isbn_key.replace("-", "").replace(" ", "")
-        new_cover_path = f"./image/books/book-{isbn_key}.png"
+    isbn_key = str(isbn_key).replace("-", "").replace(" ", "")
+    new_cover_path = f"./images/books/book-{isbn_key}.png"
+    if cover_response.status_code == 200:
         os.makedirs(os.path.dirname(new_cover_path), exist_ok=True)
         img = Image.open(BytesIO(cover_response.content))
         img.save(new_cover_path, 'PNG')
         print(f"Cover image saved to {new_cover_path}")
+        return True
     else:
         print(f"Failed to download cover image. Status code: {cover_response.status_code}")
-    return True
+        return False
 
 
 def get_book_data(isbn):
@@ -60,6 +62,7 @@ def get_book_data(isbn):
     url = f"https://openlibrary.org/isbn/{isbn}.yml"
     response = requests.get(url, headers=headers)
     if response.status_code != 200:
+        print(f"Error fetching book data: {response.status_code}")
         return None
     data = yaml.load(response.text)
     if not data:
