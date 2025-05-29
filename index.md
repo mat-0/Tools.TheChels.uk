@@ -8,6 +8,7 @@ seo: toolkit
 ## Tools
 
 * [Weather Forecast by postcode](/weather-forecast) - Weather for a specific postcode (requires OpenWeatherMap API key)
+* [Refinement Thought Provoker](/refinement) - Randomly generated thought provoker for refinement sessions
 * [Teaming](/teaming) - Helping Engineers in group programming sessions
 * [Pomodoro Timer](/pomodoro) - Use the Pomodoro technique for time management.
 * [Monte Carlo Simulator](/monte-carlo) - Run Monte Carlo simulations and visualize results for agile teams
