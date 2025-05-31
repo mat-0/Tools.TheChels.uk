@@ -18,7 +18,6 @@ _python/config.py
 _python/__pycache__/
 converts/
 _python/scratch.py
-_layouts/weather-forecast.html
 images/.DS_Store
 images/books/
 images/books/.DS_Store
