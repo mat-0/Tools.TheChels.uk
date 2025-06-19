@@ -17,6 +17,7 @@ seo: toolkit
 * [Podcast Grid](/podcast-grid) - Podcast artwork as a grid from an OPML file
 * [Podcast Dates](/podcast-dates) - Find the last published episode for each podcast in an OPML file
 * [Fire Calculator](/fire) - Fire Calculator
+* [Invoice Editor](/invoice) - Create, edit, and print invoices as PDF
 
 ## Additional Helpers
 
@@ -66,3 +67,5 @@ seo: toolkit
 * [E3](/e3)
 * [E4](/e4)
 * [Q3](/q3)
+
+## Invoicing
