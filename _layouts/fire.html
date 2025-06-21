@@ -271,12 +271,7 @@
                 // Calculate pension incomes for the current year
                 let dbIncome = hasDefinedBenefit && age >= definedBenefitStartYear ? definedBenefitAmount : 0;
                 let spIncome = hasStatePension && age >= statePensionStartAge ? statePensionAmount : 0;
-
-                // Adjust for real/nominal terms
-                if (showRealTerms) {
-                    dbIncome = dbIncome / Math.pow(1 + inflationRate, age - currentAge);
-                    spIncome = spIncome / Math.pow(1 + inflationRate, age - currentAge);
-                }
+                // Do NOT adjust pensions for inflation: they are already in today's money
 
                 // Calculate spending based on age
                 let inflationAdjustedSpending;
@@ -748,7 +743,7 @@
 
                                     return result;
                                 }
-                            }
+                            },
                         },
                         legend: {
                             display: true,
