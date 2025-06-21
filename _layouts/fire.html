@@ -16,8 +16,12 @@
             </div>
 
             <div class="form-group">
-                <label for="annualSpending">Annual Spending in Retirement (£):</label>
-                <input type="number" id="annualSpending" min="0" value="36000" required>
+                <label for="annualSpendingBefore75">Annual Spending before age 75 (£):</label>
+                <input type="number" id="annualSpendingBefore75" min="0" value="36000" required>
+            </div>
+            <div class="form-group">
+                <label for="annualSpendingAfter75">Annual Spending from age 75 (£):</label>
+                <input type="number" id="annualSpendingAfter75" min="0" value="36000" required>
             </div>
 
             <div class="form-group">
@@ -193,7 +197,8 @@
             // Get input values
             const currentAge = parseInt(document.getElementById('currentAge').value);
             const retirementAge = parseInt(document.getElementById('retirementAge').value);
-            const annualSpending = parseFloat(document.getElementById('annualSpending').value);
+            const annualSpendingBefore75 = parseFloat(document.getElementById('annualSpendingBefore75').value);
+            const annualSpendingAfter75 = parseFloat(document.getElementById('annualSpendingAfter75').value);
             const currentAssets = parseFloat(document.getElementById('currentAssets').value);
             const monthlyContributions = parseFloat(document.getElementById('monthlyContributions').value);
             const growthRate = parseFloat(document.getElementById('growthRate').value) / 100;
@@ -219,7 +224,8 @@
             const results = calculateRetirementProjection(
                 currentAge,
                 retirementAge,
-                annualSpending,
+                annualSpendingBefore75,
+                annualSpendingAfter75,
                 currentAssets,
                 monthlyContributions,
                 growthRate,
@@ -242,11 +248,10 @@
             resultsContainer.scrollIntoView({ behavior: 'smooth' });
         });
 
-        function calculateRetirementProjection(currentAge, retirementAge, annualSpending, currentAssets, monthlyContributions, growthRate, inflationRate, withdrawalRate, hasDefinedBenefit, definedBenefitAmount, definedBenefitStartYear, hasStatePension, statePensionAmount, statePensionStartAge, showRealTerms) {
+        function calculateRetirementProjection(currentAge, retirementAge, annualSpendingBefore75, annualSpendingAfter75, currentAssets, monthlyContributions, growthRate, inflationRate, withdrawalRate, hasDefinedBenefit, definedBenefitAmount, definedBenefitStartYear, hasStatePension, statePensionAmount, statePensionStartAge, showRealTerms) {
             const maxAge = 100;
             const years = maxAge - currentAge + 1;
-            const reducedSpendingAge = 75; // Age when spending becomes flat (ignoring inflation)
-
+            const reducedSpendingAge = 75;
             let assets = [];
             let realGrowthRate = (1 + growthRate) / (1 + inflationRate) - 1;
             let fundsExhaustedAge = null;
@@ -271,30 +276,28 @@
                 // Calculate pension incomes for the current year
                 let dbIncome = hasDefinedBenefit && age >= definedBenefitStartYear ? definedBenefitAmount : 0;
                 let spIncome = hasStatePension && age >= statePensionStartAge ? statePensionAmount : 0;
-                // Do NOT adjust pensions for inflation: they are already in today's money
-
-                // Calculate spending based on age
-                let inflationAdjustedSpending;
-                let totalDesiredSpending;
-
+                let spending;
                 if (age < reducedSpendingAge) {
-                    // Before age 75, normal inflation adjustment
-                    inflationAdjustedSpending = annualSpending * Math.pow(1 + inflationRate, age - retirementAge);
-                    if (showRealTerms) inflationAdjustedSpending = annualSpending;
-                    totalDesiredSpending = inflationAdjustedSpending;
+                    spending = annualSpendingBefore75;
                 } else {
-                    // After age 75, flat spending plus pension benefits
-                    inflationAdjustedSpending = annualSpending;
-                    if (!showRealTerms) inflationAdjustedSpending = annualSpending * Math.pow(1 + inflationRate, age - retirementAge);
-                    totalDesiredSpending = inflationAdjustedSpending + dbIncome + spIncome;
+                    spending = annualSpendingAfter75;
+                }
+                let inflationAdjustedSpending;
+                if (age < reducedSpendingAge) {
+                    inflationAdjustedSpending = spending * Math.pow(1 + inflationRate, age - retirementAge);
+                    if (showRealTerms) inflationAdjustedSpending = spending;
+                } else {
+                    inflationAdjustedSpending = spending;
+                    if (!showRealTerms) inflationAdjustedSpending = spending * Math.pow(1 + inflationRate, age - retirementAge);
                 }
 
-                // Calculate how much needs to be withdrawn from portfolio
+                // Portfolio withdrawal logic
                 let requiredFromPortfolio;
                 if (age < reducedSpendingAge) {
                     requiredFromPortfolio = Math.max(0, inflationAdjustedSpending - dbIncome - spIncome);
                 } else {
-                    requiredFromPortfolio = inflationAdjustedSpending; // After age 75, withdraw full annual spending regardless of pension income
+                    // From 75 onwards, pensions come first, only withdraw remainder to meet flat spending
+                    requiredFromPortfolio = Math.max(0, inflationAdjustedSpending - dbIncome - spIncome);
                 }
 
                 // If funds were already exhausted in a previous year, skip calculation but keep the age in our data
@@ -307,7 +310,7 @@
                         definedBenefitIncome: dbIncome,
                         portfolioWithdrawalNeeded: 0,
                         totalIncome: dbIncome + spIncome,
-                        totalDesiredSpending: totalDesiredSpending,
+                        totalDesiredSpending: inflationAdjustedSpending,
                         spendingRequired: inflationAdjustedSpending,
                         isFlatSpending: age >= reducedSpendingAge,
                         fundsExhausted: true
@@ -327,7 +330,7 @@
                         definedBenefitIncome: dbIncome,
                         portfolioWithdrawalNeeded: currentValue,
                         totalIncome: dbIncome + spIncome + currentValue,
-                        totalDesiredSpending: totalDesiredSpending,
+                        totalDesiredSpending: inflationAdjustedSpending,
                         spendingRequired: inflationAdjustedSpending,
                         isFlatSpending: age >= reducedSpendingAge,
                         fundsExhausted: true
@@ -335,7 +338,6 @@
                     currentValue = 0;
                     continue;
                 }
-
                 assets.push({
                     age: age,
                     value: displayValue,
@@ -344,94 +346,22 @@
                     definedBenefitIncome: dbIncome,
                     portfolioWithdrawalNeeded: requiredFromPortfolio,
                     totalIncome: dbIncome + spIncome + requiredFromPortfolio,
-                    totalDesiredSpending: totalDesiredSpending,
+                    totalDesiredSpending: inflationAdjustedSpending,
                     spendingRequired: inflationAdjustedSpending,
                     isFlatSpending: age >= reducedSpendingAge
                 });
-
-                // Apply withdrawal and growth - no monthly contributions during retirement
                 currentValue = Math.max(0, (currentValue - requiredFromPortfolio) * (1 + (showRealTerms ? realGrowthRate : growthRate)));
             }
 
-            // Calculate required nest egg accounting for flat spending in later years
-            let requiredNestEgg;
-            if (retirementAge < reducedSpendingAge) {
-                const yearsBeforeReduction = reducedSpendingAge - retirementAge;
-                let preReductionValue = 0;
-                for (let i = 0; i < yearsBeforeReduction; i++) {
-                    let yearSpending = annualSpending * Math.pow(1 + inflationRate, i);
-                    if (showRealTerms) yearSpending = annualSpending;
-                    preReductionValue += yearSpending / Math.pow(1 + (showRealTerms ? realGrowthRate : growthRate), i);
-                }
-                const yearsAfterReduction = maxAge - reducedSpendingAge + 1;
-                let postReductionValue = 0;
-                for (let i = 0; i < yearsAfterReduction; i++) {
-                    let yearSpending = annualSpending;
-                    if (!showRealTerms) yearSpending = annualSpending * Math.pow(1 + inflationRate, i + yearsBeforeReduction);
-                    postReductionValue += yearSpending / Math.pow(1 + (showRealTerms ? realGrowthRate : growthRate), i + yearsBeforeReduction);
-                }
-                requiredNestEgg = preReductionValue + postReductionValue;
-            } else {
-                const yearsInRetirement = maxAge - retirementAge + 1;
-                requiredNestEgg = annualSpending * yearsInRetirement / ((showRealTerms ? realGrowthRate : growthRate) > 0 ? (showRealTerms ? realGrowthRate : growthRate) * Math.pow(1 + (showRealTerms ? realGrowthRate : growthRate), yearsInRetirement) / (Math.pow(1 + (showRealTerms ? realGrowthRate : growthRate), yearsInRetirement) - 1) : 1);
-            }
-
-            // Adjust required nest egg for pension income
-            if (hasDefinedBenefit) {
-                const dbStartYear = Math.max(definedBenefitStartYear, retirementAge);
-                const dbYears = maxAge - dbStartYear + 1;
-                if (dbStartYear < reducedSpendingAge) {
-                    const yearsBeforeReduction = reducedSpendingAge - dbStartYear;
-                    let dbPreReductionValue = 0;
-                    for (let i = 0; i < yearsBeforeReduction; i++) {
-                        let dbVal = definedBenefitAmount;
-                        if (showRealTerms) dbVal = definedBenefitAmount / Math.pow(1 + inflationRate, i + (dbStartYear - retirementAge));
-                        dbPreReductionValue += dbVal / Math.pow(1 + (showRealTerms ? realGrowthRate : growthRate), i + (dbStartYear - retirementAge));
-                    }
-                    const yearsAfterReduction = maxAge - reducedSpendingAge + 1;
-                    let dbPostReductionValue = 0;
-                    for (let i = 0; i < yearsAfterReduction; i++) {
-                        let dbVal = definedBenefitAmount;
-                        if (showRealTerms) dbVal = definedBenefitAmount / Math.pow(1 + inflationRate, i + yearsBeforeReduction + (dbStartYear - retirementAge));
-                        dbPostReductionValue += dbVal / Math.pow(1 + (showRealTerms ? realGrowthRate : growthRate), i + yearsBeforeReduction + (dbStartYear - retirementAge));
-                    }
-                    requiredNestEgg -= (dbPreReductionValue + dbPostReductionValue);
-                } else {
-                    const yearsInDb = maxAge - dbStartYear + 1;
-                    let dbValue = definedBenefitAmount * yearsInDb / ((showRealTerms ? realGrowthRate : growthRate) > 0 ? (showRealTerms ? realGrowthRate : growthRate) * Math.pow(1 + (showRealTerms ? realGrowthRate : growthRate), yearsInDb) / (Math.pow(1 + (showRealTerms ? realGrowthRate : growthRate), yearsInDb) - 1) : 1);
-                    if (showRealTerms) dbValue = dbValue / Math.pow(1 + inflationRate, dbStartYear - retirementAge);
-                    requiredNestEgg -= dbValue;
-                }
-            }
-            if (hasStatePension) {
-                const spStartYear = Math.max(statePensionStartAge, retirementAge);
-                const spYears = maxAge - spStartYear + 1;
-                if (spStartYear < reducedSpendingAge) {
-                    const yearsBeforeReduction = reducedSpendingAge - spStartYear;
-                    let spPreReductionValue = 0;
-                    for (let i = 0; i < yearsBeforeReduction; i++) {
-                        let spVal = statePensionAmount;
-                        if (showRealTerms) spVal = statePensionAmount / Math.pow(1 + inflationRate, i + (spStartYear - retirementAge));
-                        spPreReductionValue += spVal / Math.pow(1 + (showRealTerms ? realGrowthRate : growthRate), i + (spStartYear - retirementAge));
-                    }
-                    const yearsAfterReduction = maxAge - reducedSpendingAge + 1;
-                    let spPostReductionValue = 0;
-                    for (let i = 0; i < yearsAfterReduction; i++) {
-                        let spVal = statePensionAmount;
-                        if (showRealTerms) spVal = statePensionAmount / Math.pow(1 + inflationRate, i + yearsBeforeReduction + (spStartYear - retirementAge));
-                        spPostReductionValue += spVal / Math.pow(1 + (showRealTerms ? realGrowthRate : growthRate), i + yearsBeforeReduction + (spStartYear - retirementAge));
-                    }
-                    requiredNestEgg -= (spPreReductionValue + spPostReductionValue);
-                } else {
-                    const yearsInSp = maxAge - spStartYear + 1;
-                    let spValue = statePensionAmount * yearsInSp / ((showRealTerms ? realGrowthRate : growthRate) > 0 ? (showRealTerms ? realGrowthRate : growthRate) * Math.pow(1 + (showRealTerms ? realGrowthRate : growthRate), yearsInSp) / (Math.pow(1 + (showRealTerms ? realGrowthRate : growthRate), yearsInSp) - 1) : 1);
-                    if (showRealTerms) spValue = spValue / Math.pow(1 + inflationRate, spStartYear - retirementAge);
-                    requiredNestEgg -= spValue;
-                }
-            }
+            // Find funds exhausted age for messaging
+            let fundsExhausted = assets.find(a => a.fundsExhausted);
+            let fundsExhaustedAgeResult = fundsExhausted ? fundsExhausted.age : null;
+            let assetsAt100 = assets.find(a => a.age === 100)?.value || 0;
             return {
                 assets: assets,
-                requiredNestEgg: requiredNestEgg,
+                fundsExhaustedAge: fundsExhaustedAgeResult,
+                assetsAt100: assetsAt100,
+                requiredNestEgg: 0, // Not used in new logic
                 hasDefinedBenefit: hasDefinedBenefit,
                 definedBenefitAmount: definedBenefitAmount,
                 definedBenefitStartYear: definedBenefitStartYear,
@@ -439,37 +369,40 @@
                 statePensionAmount: statePensionAmount,
                 statePensionStartAge: statePensionStartAge,
                 reducedSpendingAge: reducedSpendingAge,
-                flatSpendingAmount: annualSpending,
+                flatSpendingAmount: annualSpendingAfter75,
                 showRealTerms: showRealTerms
             };
         }
 
         function displayResults(results) {
-            const { assets, requiredNestEgg, hasDefinedBenefit, definedBenefitAmount, definedBenefitStartYear, hasStatePension, statePensionAmount, statePensionStartAge, reducedSpendingAge, flatSpendingAmount, showRealTerms } = results;
+            const { assets, fundsExhaustedAge, assetsAt100, hasDefinedBenefit, definedBenefitAmount, definedBenefitStartYear, hasStatePension, statePensionAmount, statePensionStartAge, reducedSpendingAge, flatSpendingAmount, showRealTerms } = results;
             const lastAccumulationYear = assets.find(a => a.phase === 'withdrawal')?.age - 1 || 0;
             const accumulationValue = assets.find(a => a.age === lastAccumulationYear)?.value || 0;
             const retirementAge = lastAccumulationYear + 1;
 
             // Create summary HTML
-            let summaryHtml = `
-                <p><strong>Required nest egg:</strong> £${requiredNestEgg.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
+            let summaryHtml = '';
+            if (fundsExhaustedAge && fundsExhaustedAge < 90) {
+                summaryHtml += `<p style='color:red'><strong>Error:</strong> Your funds run out at age ${fundsExhaustedAge}.</p>`;
+            } else if (assetsAt100 <= 1000) {
+                summaryHtml += `<p style='color:orange'><strong>Caution:</strong> Your assets at age 100 are only £${assetsAt100.toLocaleString(undefined, { maximumFractionDigits: 0 })}.</p>`;
+            } else {
+                summaryHtml += `<p style='color:green'><strong>Success:</strong> You have £${assetsAt100.toLocaleString(undefined, { maximumFractionDigits: 0 })} left at age 100.</p>`;
+            }
+            summaryHtml += `
                 <p><strong>Projected retirement assets:</strong> £${accumulationValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>`;
-
             if (hasDefinedBenefit) {
                 summaryHtml += `
                 <p><strong>Defined benefit pension:</strong> £${definedBenefitAmount.toLocaleString(undefined, { maximumFractionDigits: 0 })} annually starting at age ${definedBenefitStartYear}</p>`;
             }
-
             if (hasStatePension) {
                 summaryHtml += `
                 <p><strong>State pension:</strong> £${statePensionAmount.toLocaleString(undefined, { maximumFractionDigits: 0 })} annually starting at age ${statePensionStartAge}</p>`;
             }
-
             summaryHtml += `
-                <p><strong>Flat spending amount:</strong> £${flatSpendingAmount.toLocaleString(undefined, { maximumFractionDigits: 0 })} from age ${reducedSpendingAge}</p>
-                <p><strong>${accumulationValue >= requiredNestEgg ? 'You are on track for retirement!' : 'You may need to save more for retirement.'}</strong></p>
+                <p><strong>Spending before age 75:</strong> £${assets.find(a => a.age === reducedSpendingAge - 1)?.spendingRequired.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
+                <p><strong>Spending from age 75:</strong> £${flatSpendingAmount.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
             `;
-
             summaryResults.innerHTML = summaryHtml;
 
             // Prepare chart data
