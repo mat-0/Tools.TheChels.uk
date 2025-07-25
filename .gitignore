@@ -3,7 +3,6 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
-.DS_Store
 Gemfile.lock
 Gemfile
 .vscode/settings.json
@@ -18,7 +17,7 @@ _python/config.py
 _python/__pycache__/
 converts/
 _python/scratch.py
-images/.DS_Store
 images/books/
-images/books/.DS_Store
+.DS_Store
 images/.DS_Store
+images/books/.DS_Store

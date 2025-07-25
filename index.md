@@ -67,5 +67,3 @@ seo: toolkit
 * [E3](/e3)
 * [E4](/e4)
 * [Q3](/q3)
-
-## Invoicing
