@@ -19,7 +19,7 @@ description: "A collection and list of hopefully useful web-based tools, calcula
 
 ## Tools
 
-- [Activity Plan](/activity-plan) - Hourly activity planner over 4 weeks with effort level tracking
+- [ME/CFS Activity Plan](/activity-plan) - Hourly activity planner over 4 weeks with effort level tracking with local storage and print friendly
 - [Weather Forecast by postcode](/weather-forecast) - Weather for a specific postcode (requires OpenWeatherMap API key)
 - [Refinement Thought Provoker](/refinement) - Randomly generated thought provoker for refinement sessions
 - [Teaming](/teaming) - Helping Engineers in group programming sessions
@@ -76,10 +76,10 @@ description: "A collection and list of hopefully useful web-based tools, calcula
 
 ## Role Profile Templates
 
-- [E2](/e2)
-- [E3](/e3)
-- [E4](/e4)
-- [Q3](/q3)
+- [E2](/e2) - Role profile template for level E2 Software Engineer
+- [E3](/e3) - Role profile template for level E3 Senior Software Engineer
+- [E4](/e4) - Role profile template for level E4 Engineering Manager
+- [Q3](/q3) - Role profile template for level Q2 Senior QA Engineer
 
 ## RSS/OPML/Feed Tools
 
