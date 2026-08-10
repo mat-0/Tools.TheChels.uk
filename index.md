@@ -1,7 +1,7 @@
 ---
 layout: index
-title: Menu
-seo: toolkit
+title: "List of Tools"
+seo: "A collection and list of hopefully useful web-based tools, calculators, timer, converters"
 
 ---
 
