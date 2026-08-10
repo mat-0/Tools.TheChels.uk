@@ -1,11 +1,40 @@
 highlighter: rouge
 permalink: ./:title
 title: "Toolkit"
-description: "// Hopefully helpful"
+description: "// Hopefully helpful Tools"
 author: "thechelsuk"
 url: https://tools.thechels.uk
 copyright: "thechelsuk"
+
+owner:
+  name: "thechelsuk"
+  email: "feedback@thechels.uk"
+  url: "https://thechels.uk/about"
+  avatar: "https://thechels.uk/.well-known/avatar.png"
+  sameAs:
+    - "https://reddit.com/user/thechelsuk"
+    - "https://youtube.com/thechelsuk"
+    - "https://bsky.app/profile/thechels.uk"
+    - "https://twitch.tv/thechelsuk"
+    - "https://github.com/thechelsuk"
+    - "https://keybase.io/thechelsuk"
+  jobTitle: "Owner"
+  worksFor: "thechelsuk"
+organization:
+  name: "thechelsuk"
+  url: "https://thechels.uk"
+  logo: "https://thechels.uk/.well-known/avatar.png"
+  sameAs:
+    - "https://reddit.com/user/thechelsuk"
+    - "https://youtube.com/thechelsuk"
+    - "https://bsky.app/profile/thechels.uk"
+    - "https://twitch.tv/thechelsuk"
+    - "https://github.com/thechelsuk"
+    - "https://keybase.io/thechelsuk"
+
+
 encoding: UTF-8
+timezone: Europe/London
 future: false
 port: 2000
 theme:

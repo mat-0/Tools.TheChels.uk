@@ -6,9 +6,41 @@
         <title>{{page.title}} - Toolkit by thechelsuk</title>
         <meta name="title" content="{{page.title}} - Toolkit by thechelsuk">
         <meta name="description" content="{{page.description}} - Toolkit by thechelsuk">
-        <meta name="canonical" content="{{page.url | absolute_url }}"
+        <meta name="canonical" content="{{page.url | absolute_url }}">
+        <meta name="robots" content="index,follow">
+        <!-- opengraph -->
+        <meta property="og:locale" content="en_GB">
+        <meta property="og:type" content="article">
+        <meta property="og:title"
+            content="{%if page.title %}{{ page.title }}{% else %}{{ post.title }}{% endif %} | {{ site.title }} by thechelsuk">
+        <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+        <meta property="og:image" content="{{ site.owner.avatar }}">
+        <meta property="og:site_name" content="{{ site.title }} {{ site.description }} by thechelsuk">
+        <meta property="og:description" content="{{ profile_description }} | {{ site.title }} by thechelsuk">
+        <meta property="article:publisher" content="{{ site.url }}">
+        <meta property="article:author" content="{{ site.owner.name }} at {{site.organization.url }}">
+        <meta property="article:published_time" content="{{ page.date }}">
 
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title"
+            content="{%if page.title %}{{ page.title }}{% else %}{{ post.title }}{% endif %} | {{ site.title }} by thechelsuk">
+        <meta name="twitter:description" content="{{ profile_description }} | {{ site.title }} by thechelsuk">
+        <meta name="twitter:image" content="{{ site.owner.avatar }}">
 
+        <!-- Linking socials and RSS feeds -->
+
+        <meta name="fediverse:creator" content="@thechels.uk" />
+        <link rel="me" href="https://bsky.app/profile/thechels.uk">
+        <link rel="me" href="https://www.youtube.com/@thechelsuk">
+        <link rel="me" href="https://www.twitch.tv/thechelsuk">
+        <link rel="me" href="https://ko-fi.com/thechelsuk">
+        <link rel="me" href="https://github.com/thechelsuk">
+        <link rel="me" href="https://web.brid.gy/thechels.uk">
+        <link rel="me" href="https://hiyd.uk">
+        <link rel="me" href="https://nuchronic.uk">
+        <link rel="me" href="https://cheltenham-od.uk">
+
+        <!-- meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="format-detection" content="telephone=no">
         <meta name="format-detection" content="address=no">
@@ -24,9 +56,24 @@
         <link href="/fonts/TheChelsMedium.woff" rel="preload" crossorigin as="font" type="font/woff">
         <link rel="stylesheet" href="/style.css">
 
+        <link rel="pingback" href="https://webmention.io/thechels.uk/xmlrpc" />
         <!-- verify -->
         <meta name="msvalidate.01" content="0792E4237BC516A9033CB784F6F629E1" />
 
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "{{ site.organization.name }}",
+          "url": "{{ site.organization.url }}",
+          "logo": "{{ site.organization.logo }}",
+          "sameAs": [
+            {% for link in site.organization.sameAs %}
+            "{{ link }}"{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ]
+        }
+        </script>
     </head>
 
     <body>
