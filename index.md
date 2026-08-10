@@ -1,7 +1,7 @@
 ---
 layout: index
 title: "List of Tools"
-seo: "A collection and list of hopefully useful web-based tools, calculators, timer, converters"
+description: "A collection and list of hopefully useful web-based tools, calculators, timer, converters"
 
 ---
 
