@@ -2,7 +2,8 @@
 title: Latest RSS Items
 layout: page
 permalink: /blogroll-dates/
-
+category: local
+description: "Check your opml file for stale or old blogs"
 ---
 
 Updated on 2026-03-19

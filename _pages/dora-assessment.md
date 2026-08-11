@@ -4,7 +4,8 @@ layout: index
 title: Dora Assessment
 seo: Dora
 permalink: /dora-assessment
-
+category: workplace
+description: "A checklist for the 24 key accelerate outcomes"
 ---
 
 

@@ -7,15 +7,14 @@ description: "A collection and list of hopefully useful web-based tools, calcula
 
 ## Feeds
 
-- [Dotnet news and updates](https://feeds.thechels.uk/dotnet) - Combined news from top sources into one page and feed.
-- [SecOps news and updates](https://feeds.thechels.uk/secops) - Combined news from top sources into one page and feed.
-- [Insurance news and updates](https://feeds.thechels.uk/insurance) - Combined news from top sources into one page and feed.
-- [Cheltenham news and updates](https://cod.thechels.uk/news) - Combined news from local sources into one page and feed.
+- [Dotnet news and updates](https://feeds.thechels.uk/dotnet) - Combined news from top Dotnet sources into one page and feed.
+- [SecOps news and updates](https://feeds.thechels.uk/secops) - Combined news from top SecOps sources into one page and feed.
+- [Insurance news and updates](https://feeds.thechels.uk/insurance) - Combined news from top insurance sources into one page and feed.
+- [Cheltenham news and updates](https://cheltenham-od.uk/cheltenham-news) - Combined news from local sources into one page and feed.
 
 ## Search
 
 - [Search](https://search.thechels.uk) ⇗ - Search across multiple search engines and platforms using bangs and shortcodes.
-- [YAML Film Search](/film) - Search your yaml film file.
 
 ## Tools
 
@@ -58,7 +57,7 @@ description: "A collection and list of hopefully useful web-based tools, calcula
 - [Convert Image to SVG](/image-to-svg) - Convert images to SVG format.
 - [Exif data](/exif) - Extract and display EXIF data from images.
 
-## Templates
+## Work Templates
 
 - [Interview Template](/interview-template) - Template for conducting interviews.
 - [Strategy Template](/strategy-template) - Template for creating strategies.
@@ -67,29 +66,32 @@ description: "A collection and list of hopefully useful web-based tools, calcula
 - [Engineering Principles](/principles)
 - [Dora Assessment](/dora-assessment)
 
-## Ensemblism Social Programming
+### Role Profile Templates
+
+- [E2 - Software Engineer Role Profile](/e2) - Role profile template
+- [E3 - Senior Software Engineer Role Profile](/e3) - Role profile template
+- [E4 - Engineering Manager Role Profile](/e4) - Role profile template
+- [Q3 - Senior QA Engineer Role Profile](/q3) - Role profile template
+
+### Ensemblism Social Programming Ways of Working Exercise
 
 - [Resources](/ensemblism/resources)
 - [Roles](/ensemblism/roles)
 - [Rules](/ensemblism/rules)
 - [Symptoms](/ensemblism/symptoms)
 
-## Role Profile Templates
+## Local Tooling
 
-- [E2](/e2) - Role profile template for level E2 Software Engineer
-- [E3](/e3) - Role profile template for level E3 Senior Software Engineer
-- [E4](/e4) - Role profile template for level E4 Engineering Manager
-- [Q3](/q3) - Role profile template for level Q2 Senior QA Engineer
+- runs on a local build only with associated python scripts to parse. These pages  are just outputs.
 
-## RSS/OPML/Feed Tools
-
-Using local machine to run python scripts to parse, these are just outputs of those scripts
+### RSS/OPML/Feed Tools
 
 - [Blogroll-dates](/blogroll-dates) - Extract and display latest publication dates from blogroll OPML file.
 - [Podcast-dates](/podcast-dates) - Extract and display latest publication dates from podcast OPML file.
 - [Podcast Grid](/podcast-grid) - Podcast artwork as a grid from an OPML file
+- [YAML Film Search](/film) - Search your yaml film file.
 
-## Markdown Publishing Templates
+### Markdown Publishing Templates
 
 - [Film Template](/templates/film)
 - [Quote Post Template](/templates/quote)
