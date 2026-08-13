@@ -1,6 +1,6 @@
 # Latest Podcast Episodes
 
-*Updated on 2025-04-19*
+- Updated on 2025-04-19
 
 | Podcast | Latest Episode | Published |
 | --------- | ---------------- | ---------- |
