@@ -13,13 +13,13 @@ category: work
 - Operates at a feature level within a team
 - Works with others across engineering to reduce cross-team dependencies
 - Works with Architects and BAs in shaping future work
+
 ## Communication
 
 - Communicates effectively, clearly, and concisely in written and verbal form, in both technical and non technical subjects, and in an audience-oriented way. Actively listens to others and ensures they are understood. Pays attention to nonverbal communication.
 - Contributes effectively in team ceremonies, facilitates time and space for others
 - Contributes effectively to cross-team initiatives e.g. lunch and learns
 - Understands their team's domain, shares their knowledge frequently with their teammates and contributes to their team's documentation. Watches out for opportunities to share knowledge and encourages others to do the same.
-
 
 ## Impact
 
@@ -51,7 +51,6 @@ category: work
 - Commits to a realistic amount of work, and works with their teammates both to ensure they understand priority and urgency, and to deliver upon them accordingly.
 - Escalates any blockers, delays to their team at least daily. Clarifies expectations with their teammates.
 - Communicates scope changes within team, stakeholders, management as appropriate
-
 
 ## Leadership
 

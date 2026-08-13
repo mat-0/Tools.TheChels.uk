@@ -39,7 +39,6 @@ category: work
 - Understands the testing pyramid, writes unit tests in accordance with it, as well as higher level tests with help from more senior engineers.
 - Always tests expected edge cases and errors as well as the happy path.
 
-
 ## Delivery
 
 - Has a delivery focus
@@ -49,7 +48,6 @@ category: work
 - Commits to a realistic amount of work, and works with their teammates both to ensure they understand priority and urgency, and to deliver upon them accordingly.
 - Escalates any blockers, delays to their team at least daily. Clarifies expectations with their teammates.
 
-
 ## Leadership
 
 - Supports less experienced colleagues
@@ -58,7 +56,3 @@ category: work
 - Actively ensures work aligns to the team's definitions of ready, done and overarching ways of working
 - Seeks to improve team artifacts
 - Strives to be objective and reflects on their own biases when making decisions. Holds themselves accountable for decision and outcomes.
-
-
-
-

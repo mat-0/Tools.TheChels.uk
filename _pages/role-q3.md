@@ -7,8 +7,6 @@ description: "A software engineering team role profile template for a Senior QA 
 category: work
 ---
 
-
-
 ## Sphere of influence
 
 - Operates as a team member within a pod, with collaboration with other pods within Engineering.
@@ -22,7 +20,6 @@ category: work
 - Contributes effectively in team ceremonies, facilitates time and space for others
 - Contributes effectively to cross-team initiatives e.g. lunch and learns
 - Understands their team's domain, shares their knowledge frequently with their teammates and contributes to their team's documentation. Watches out for opportunities to share knowledge and encourages others to do the same.
-
 
 ## Impact
 
@@ -54,7 +51,6 @@ category: work
 - Commits to a realistic amount of work, and works with their teammates both to ensure they understand priority and urgency, and to deliver upon them accordingly.
 - Escalates any blockers, delays to their team at least daily. Clarifies expectations with their teammates.
 - Communicates scope changes within team, stakeholders, management as appropriate
-
 
 ## Leadership
 

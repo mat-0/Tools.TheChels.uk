@@ -15,10 +15,9 @@ category: work
 - Works closely with the architects and HoE in shaping architectural and technological choices/design.
 - Is first port of call for out of hours issues and priority zero production issues
 
-
 ## Communications
 
-- Communicates effectively, clearly, and concisely in written and verbal form, in both technical and non technical subjects, and in an audience-oriented way. Actively listens to others and ensures they are understood. Pays attention to nonverbal communication.
+- Communicates effectively, clearly, and concisely in written and verbal form, in both technical and non technical subjects, and in an audience-oriented way. Actively listens to others and ensures they are understood. Pays attention to non-verbal communication.
 - Contributes effectively in team ceremonies, facilitates time and space for others
 - Contributes effectively to cross-team initiatives e.g. lunch and learns, personal development time
 - Understands the business domain, shares their knowledge frequently with their teammates and contributes to their team's documentation.
