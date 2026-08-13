@@ -2,9 +2,9 @@
 
 layout: index
 title: E3 Role Profile
-seo: E3
 permalink: /e3
-
+description: "A software engineering team role profile template for a Senior Software Engineer"
+category: work
 ---
 
 ## Sphere of influence

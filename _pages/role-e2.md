@@ -2,9 +2,9 @@
 
 layout: index
 title: E2 Role Profile
-seo: E2
 permalink: /e2
-
+description: "A software engineering team role profile template for a Software Engineer"
+category: work
 ---
 
 ## Sphere of influence

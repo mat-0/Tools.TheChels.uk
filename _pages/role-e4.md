@@ -2,9 +2,9 @@
 
 layout: index
 title: E4 Role Profile
-seo: E4
 permalink: /e4
-
+description: "A software engineering team role profile template for an Engineering Manager"
+category: work
 ---
 
 ## Scope

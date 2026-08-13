@@ -4,6 +4,8 @@ layout: page
 title: Podcast Dates
 seo: Podcast Dates
 permalink: /podcast-dates
+description: "A run locally when was the podcast's last episode stale podcast from opml checker tool"
+category: local
 ---
 
 Last Updated: _2026-02-28_

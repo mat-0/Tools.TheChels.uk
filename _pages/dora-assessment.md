@@ -1,13 +1,13 @@
 ---
-
 layout: index
-title: Dora Assessment
-seo: Dora
+title: Dora Assessment 24 key capabilities checklist
 permalink: /dora-assessment
 category: workplace
 description: "A checklist for the 24 key accelerate outcomes"
 ---
 
+> Rank your team's capabilities with a 1 to 5 scale to review where to target efforts.
+> Focus not on fixing the capability but the root cause that has stopped this from happening already.
 
 ## Review of the 24 key capabilities of the Accelerate DevOps survey outcomes
 

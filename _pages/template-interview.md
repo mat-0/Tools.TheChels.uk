@@ -1,9 +1,9 @@
 ---
 layout: page
 title: Interview Template
-seo: Interview Template
 permalink: /interview-template
-
+description: "A software engineering team leader interview questions template"
+category: work
 ---
 
 ## Introduction

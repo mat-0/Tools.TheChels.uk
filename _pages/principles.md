@@ -4,7 +4,8 @@ layout: index
 title: Principles
 seo: Principles
 permalink: /principles
-
+description: "A software engineering team leader principles primer"
+category: work
 ---
 
 

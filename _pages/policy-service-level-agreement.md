@@ -4,7 +4,8 @@ layout: index
 title: SLA Policy Template
 seo: SLA Policy Template
 permalink: /Service-level-agreement-policy
-
+description: "A software engineering team leader's service level agreement policy template"
+category: work
 ---
 
 > SLA Policy review every 6 months - last _[date]_

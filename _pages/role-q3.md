@@ -2,9 +2,9 @@
 
 layout: index
 title: Q3 Role Profile
-seo: Q3
 permalink: /q3
-
+description: "A software engineering team role profile template for a Senior QA Engineer"
+category: work
 ---
 
 
