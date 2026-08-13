@@ -12,7 +12,6 @@ category: work
 
 [[_TOC_]]
 
-
 ## INTRODUCTION
 
 To Set out the needs and requirements of the business with regards to uptime, error allowance and performance of systems commensurate with business needs.
@@ -33,13 +32,11 @@ _Error Budget_ - An error budget is the maximum amount of time that a technical 
 
 _Compliance Periods_ - The period of time of which the SLO/SLA is measured. e.g. a rolling 30 day period, or rolling 12 month period, or a fixed quarter.
 
-
 ## AGREED SERVICE LEVELS
 
 - SLO
-   - Latency - TBD
-   - Availability - Uptime of Three nines (8.77 hours error budget) per 12 month rolling period.
-
+  - Latency - TBD
+  - Availability - Uptime of Three nines (8.77 hours error budget) per 12 month rolling period.
 
 ## APPENDIX
 

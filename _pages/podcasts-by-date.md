@@ -3,7 +3,7 @@
 *Updated on 2025-04-19*
 
 | Podcast | Latest Episode | Published |
-|---------|----------------|----------|
+| --------- | ---------------- | ---------- |
 | Scrum Master Toolbox Podcast: Agile storytelling from the trenches | BONUS Maria Chec Explores the Divide Between Agile Leaders and Practitioners | 2025-04-19 |
 | CyberWire Daily | Crafting malware with modern metals. [Research Saturday] | 2025-04-19 |
 | The WAN Show | That Time I Almost Got Sued - WAN Show April 18, 2025 | 2025-04-19 |

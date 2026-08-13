@@ -22,7 +22,7 @@ The policy is designed to ensure that all software development activities are co
 
 The intended audience of this policy is those staff responsible for specifying, developing, and testing software.
 
-**Guiding Principles (taken from NSSC SDP Guiding Principles)**
+### Guiding Principles (taken from NSSC SDP Guiding Principles)
 
 1. Secure development is everyone’s responsibility.
 2. It is the responsibility of everyone to keep their security knowledge up to date.
