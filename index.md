@@ -34,6 +34,7 @@ description: "A collection and list of hopefully useful web-based tools, calcula
 - [ISA Bridge Apex Calculator](/the-ISA-retirement-apex-bridge-tool) - Solve for earliest retirement or adjust growth rate to find the apex
 - [Fire Calculator for UK Retirement](/fire) - Fire Calculator
 - [Fire Calculator for UK Retirement II](/fire-two) - Alternative Fire Calculator
+- [UK Redundancy Calculator])(/uk-redundancy-pay-calculator) -Including holiday and ex gratia
 - [Invoice Editor](/invoice) - Create, edit, and print invoices as PDF
 
 ## Additional Helpers
