@@ -36,6 +36,7 @@ description: "A collection and list of hopefully useful web-based tools, calcula
 - [Fire Calculator for UK Retirement II](/fire-two) - Alternative Fire Calculator
 - [UK Redundancy Calculator](/uk-redundancy-pay-calculator) -Including holiday and ex gratia
 - [Invoice Editor](/invoice) - Create, edit, and print invoices as PDF
+- [UK runway drawdown calculator for a lump sum, redundancy or settlement](/uk-runway-calculator-drawdown)
 
 ## Additional Helpers
 
