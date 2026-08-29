@@ -1,6 +1,6 @@
 ---
 layout: runway
-title: "UK withdrawal drawndown runway calculator"
+title: "UK withdrawal drawdown runway calculator"
 permalink: /uk-runway-calculator-drawdown
 description: "Calculate UK runway from redundancy, settlement or lump sum with various wrappers and interest rates"
 schema_type: "SoftwareApplication"
